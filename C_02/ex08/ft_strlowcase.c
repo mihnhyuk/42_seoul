@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 08:40:54 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/14 15:30:30 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/14 15:45:37 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/14 19:25:23 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strlowcase(char *str)
 {
 	int	idx;
 
 	idx = 0;
-	while (src[idx] != '\0')
+	while (str[idx])
 	{
-		dest[idx] = src[idx];
+		if (str[idx] >= 'A' && str[idx] <= 'z')
+		{
+			str[idx] += ('a' - 'A');
+		}
 		idx++;
 	}
-	dest[idx] = '\0';
-	return (dest);
+	return (str);
 }

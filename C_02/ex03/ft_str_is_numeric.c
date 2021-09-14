@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 08:40:54 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/14 15:30:30 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/14 15:45:37 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/14 15:57:14 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strcpy(char *dest, char *src)
+int	ft_str_is_numeric(char *str)
 {
 	int	idx;
 
 	idx = 0;
-	while (src[idx] != '\0')
+	while (str[idx])
 	{
-		dest[idx] = src[idx];
+		if (!(str[idx] >= '0' && str[idx] <= '9')
+			return (0);
 		idx++;
 	}
-	dest[idx] = '\0';
-	return (dest);
+	return (1);
 }

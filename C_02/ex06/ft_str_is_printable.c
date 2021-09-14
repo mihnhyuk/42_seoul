@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 08:40:54 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/14 15:30:30 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/14 16:22:31 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/14 19:05:37 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strcpy(char *dest, char *src)
+int	ft_str_is_printable(char *str)
 {
 	int	idx;
 
 	idx = 0;
-	while (src[idx] != '\0')
+	while (str[idx])
 	{
-		dest[idx] = src[idx];
+		if (!((str[idx] > 20) && (str[idx] < 127)))
+			return (0);
 		idx++;
 	}
-	dest[idx] = '\0';
-	return (dest);
+	return (1);
 }
+

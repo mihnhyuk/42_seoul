@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 08:40:54 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/14 15:30:30 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/14 15:30:07 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/14 15:44:58 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	idx;
+	unsigned int	idx;
 
 	idx = 0;
-	while (src[idx] != '\0')
+	while (idx < n)
 	{
-		dest[idx] = src[idx];
+		if (src[idx])
+			dest[idx] = src[idx];
+		else
+			dest[idx] = '\0';
 		idx++;
 	}
-	dest[idx] = '\0';
 	return (dest);
 }
