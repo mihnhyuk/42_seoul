@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 20:53:35 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/16 19:14:02 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/17 00:39:22 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
@@ -16,7 +16,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	idx = 0;
 	if (size == 0 )
 	{
-		while (scr[idx])
+		while (src[idx])
 			idx++;
 		return (idx);
 	}

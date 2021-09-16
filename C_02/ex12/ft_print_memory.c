@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 17:26:54 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/16 19:10:16 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/17 00:31:36 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<unistd.h>
@@ -94,5 +94,5 @@ void	print_address_in_hex(char *addr)
 		p_to_i /= 16;
 	}
 	write(1, hex, 16);
-	write(1, ": ", 1);
+	write(1, ": ", 2);
 }
