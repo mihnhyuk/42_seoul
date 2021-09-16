@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 15:45:37 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/15 17:21:38 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/16 12:03:08 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	ft_str_is_alpha(char *str)

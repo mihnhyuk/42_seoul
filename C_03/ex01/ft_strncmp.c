@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 21:31:32 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/16 00:23:40 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:30:11 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
@@ -14,7 +14,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	unsigned int	idx;
 
 	idx = 0;
-	while ((s1[idx] && s2[idx]) && idx < n)
+	while ((s1[idx] && s2[idx]) && idx < n - 1)
 	{
 		if (s1[idx] == s2[idx])
 			idx++;

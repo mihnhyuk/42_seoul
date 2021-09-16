@@ -6,11 +6,10 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 17:26:54 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/15 21:10:17 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:10:16 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<unistd.h>
-#include<stdio.h>
 
 void	print_address_in_hex(char *addr);
 void	print_str_to_hex(char *str, unsigned int size);
@@ -21,7 +20,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	char	*dividor;
 
 	dividor = (char *) addr;
-	while (size > 15)
+	while (size > 16)
 	{
 		print_address_in_hex(dividor);
 		print_str_to_hex(dividor, size);
@@ -56,18 +55,20 @@ void	ft_putstr_non_printable(char *str, unsigned int size)
 
 void	print_str_to_hex(char *str, unsigned int size)
 {
-	  const char	*hex_list = "0123456789abcdef";
-	unsigned int	idx;
+	   const char	*hex_list = "0123456789abcdef";
+	 unsigned int	idx;
+	unsigned char	u_char;
 
 	idx = 0;
 	while (idx < 16)
-	{	
+	{
+		u_char = (unsigned char) str[idx];
 		if (idx >= size)
 			write(1, "  ", 2);
 		else
 		{
-			write(1, hex_list + (str[idx] / 16), 1);
-			write(1, hex_list + (str[idx] % 16), 1);
+			write(1, hex_list + (u_char / 16), 1);
+			write(1, hex_list + (u_char % 16), 1);
 		}
 		if (idx % 2 == 1)
 			write(1, " ", 1);

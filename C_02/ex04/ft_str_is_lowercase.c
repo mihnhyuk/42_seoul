@@ -6,10 +6,10 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 15:45:37 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/14 16:20:28 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/16 16:23:35 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_str_is_lowerase(char *str)
+int	ft_str_is_lowercase(char *str)
 {
 	int	idx;
 

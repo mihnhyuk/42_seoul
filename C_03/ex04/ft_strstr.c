@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/16 01:11:54 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:37:38 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 char	*ft_strstr(char *str, char *to_find)
@@ -14,7 +14,7 @@ char	*ft_strstr(char *str, char *to_find)
 	unsigned int	begin;
 	unsigned int	idx;
 	         int	match;
-	
+
 	begin = 0;
 	while (str[begin])
 	{
@@ -25,7 +25,7 @@ char	*ft_strstr(char *str, char *to_find)
 			if (str[begin + idx] != to_find[idx])
 			{
 				match = 0;
-				break;
+				break ;
 			}
 			idx++;
 		}
@@ -33,5 +33,5 @@ char	*ft_strstr(char *str, char *to_find)
 			return (str + begin);
 		begin++;
 	}
-	return ('\0');
+	return (0);
 }
