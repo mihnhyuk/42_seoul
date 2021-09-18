@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 15:30:07 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/17 00:31:07 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/19 08:37:41 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
@@ -20,6 +20,6 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		idx++;
 	}
 	while (idx < n)
-		dest[i++] = '\0';
+		dest[idx++] = '\0';
 	return (dest);
 }
