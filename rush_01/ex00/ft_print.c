@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 15:30:07 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/19 10:58:26 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/11 23:24:32 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/18 19:27:57 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+#include<unistd.h>
+
+void	ft_putnbr(int nb)
 {
-	unsigned int	idx;
+	        char	ascii[11];
+	         int	idx;
+	unsigned int	to_p;
 
 	idx = 0;
-	while (idx < n && src[idx])
+	if (nb < 0)
 	{
-		dest[idx] = src[idx];
-		idx++;
+		write(1, "-", 1);
+		to_p = (unsigned int)(nb * (-1));
+	}	
+	else
+		to_p = (unsigned int)nb;
+	while (nb > 9)
+	{
+		ascii[idx++] = (to_p % 10) + '0';
+		to_p /= 10;
 	}
-	while (idx < n)
-		dest[idx++] = '\0';
-	return (dest);
+	ascii[idx] = (to_p % 10) + '0';
+	while (idx >= 0)
+	{
+		write(1, &ascii[idx--], 1);
+	}
 }
