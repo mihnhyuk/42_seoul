@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/17 20:32:00 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/19 18:12:58 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 char	*ft_strstr(char *str, char *to_find)
@@ -16,11 +16,13 @@ char	*ft_strstr(char *str, char *to_find)
 	         int	match;
 
 	begin = 0;
+	if (to_find == 0)
+		return (str);
 	while (str[begin])
 	{
 		idx = 0;
 		match = 1;
-		while (to_find[idx] && str[begin + idx])
+		while (to_find[idx])
 		{
 			if (str[begin + idx] != to_find[idx])
 			{
