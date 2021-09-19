@@ -6,14 +6,13 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/19 18:12:58 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/19 20:26:54 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 char	*ft_strstr(char *str, char *to_find)
 {
 	unsigned int	begin;
 	unsigned int	idx;
-	         int	match;
 
 	begin = 0;
 	if (to_find == 0)
@@ -21,18 +20,12 @@ char	*ft_strstr(char *str, char *to_find)
 	while (str[begin])
 	{
 		idx = 0;
-		match = 1;
-		while (to_find[idx])
+		while (str[begin + idx] == to_find[idx])
 		{
-			if (str[begin + idx] != to_find[idx])
-			{
-				match = 0;
-				break ;
-			}
+			if (to_find[idx + 1] == 0)
+				return (str + begin);
 			idx++;
 		}
-		if (match)
-			return (str + begin);
 		begin++;
 	}
 	return (0);
