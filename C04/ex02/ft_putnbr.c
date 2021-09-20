@@ -6,17 +6,17 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:23:56 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/19 19:16:09 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/20 08:27:45 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putnbr(int nb)
+void	ft_putnbr(int nb)
 {
 	unsigned int	n;
 	        char	ary[15];
-			 int	idx;
+	         int	idx;
 
 	idx = 0;
 	if (nb < 0)

@@ -6,34 +6,50 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 19:19:12 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/19 19:58:46 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:04:37 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	check_blank(char *str, int idx)
+{
+	while (str[idx] == ' ' || str[idx] == '\f' || str[idx] == '\n'
+		|| str[idx] == '\r' || str[idx] == '\t' || str[idx] == '\v')
+	{
+		idx++;
+	}
+	return (idx);
+}
+
+int	check_sign(char *str, int *idx)
+{
+	int	count_minus;
+
+	count_minus = 1;
+	while (str[*idx] == '-' || str[*idx] == '+')
+	{
+		if (str[*idx] == '-')
+			count_minus *= -1;
+		(*idx)++;
+	}
+	return (count_minus);
+}
 
 int	ft_atoi(char *str)
 {
 	int	count_minus;
 	int	idx;
 	int	to_int;
-	int flag;
 
-	flag = 0;
-	count_minus = 1;
 	idx = 0;
 	to_int = 0;
-	while (str[idx])
+	idx = check_blank(str, idx);
+	count_minus = check_sign(str, &idx);
+	while (str[idx] >= '0' && str[idx] <= '9')
 	{
-		if (str[idx] == '-')
-		{
-			count_minus *= (-1);
-			flag = 1;
-		}
-		if (str[idx] >= '0' && str[idx] <= '9')
-		{
-			flag = 2;
-			to_int *= 10;
-			to_int += (str[idx] - '0');
-		}
+		to_int *= 10;
+		to_int += str[idx] - '0' ;
+		idx++;
 	}
-	return (to_int * count_minus);
+	to_int *= count_minus;
+	return (to_int);
 }

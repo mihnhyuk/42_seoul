@@ -6,15 +6,15 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:35 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/19 18:23:33 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/20 08:22:56 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
 
 void	ft_putstr(char *str)
 {
-	int idx;
-	
+	int	idx;
+
 	idx = 0;
 	while (str[idx])
 		idx++;
