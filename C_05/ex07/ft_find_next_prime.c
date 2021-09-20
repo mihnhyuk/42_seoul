@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 12:05:30 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 12:07:59 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/20 14:31:47 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_is_prime(int nb)
 	if (nb <= 1)
 		return (0);
 	iter = 2;
-	while (iter <= nb / 2)
+	while (iter <= nb / 2 && iter <= 46344)
 	{
 		if (nb % iter == 0)
 			return (0);

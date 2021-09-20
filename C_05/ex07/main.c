@@ -3,6 +3,6 @@
 int	ft_find_next_prime(int nb);
 
 int main(){
-	printf("%d", ft_find_next_prime(40));
+	printf("%d", ft_find_next_prime(2147483647));
 	
 }

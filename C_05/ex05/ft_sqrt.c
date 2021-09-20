@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 11:49:15 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 11:55:06 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:36:51 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ int	ft_iterative_power(int nb, int power)
 
 int	ft_sqrt(int nb)
 {
-	int	iter;
-	int	pow_iter;
+	long long int	iter;
+	long long int	pow_iter;
 
 	iter = 1;
 	pow_iter = 1;
-	while (pow_iter < nb)
+	while (pow_iter < (long long)nb)
 	{
 		iter++;
 		pow_iter = ft_iterative_power(iter, 2);
 	}
-	if (pow_iter == nb)
-		return (iter);
+	if (pow_iter == (long long int)nb)
+		return ((int)iter);
 	else
 		return (0);
 }

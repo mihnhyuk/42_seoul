@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 22:38:28 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/20 14:45:12 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/20 14:49:39 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strstr(char *str, char *to_find)
-{
-	unsigned int	begin;
-	unsigned int	idx;
+#include <unistd.h>
 
-	begin = 0;
-	if (!(*to_find))
-		return (str);
-	while (str[begin])
+int	main(int argc, char *argv[])
+{
+	int	iter;
+	int	iter2;
+
+	iter = 1;
+	while (iter < argc)
 	{
-		idx = 0;
-		while (str[begin + idx] == to_find[idx])
-		{
-			if (!(to_find[idx + 1]))
-				return (str + begin);
-			idx++;
-		}
-		begin++;
+		iter2 = 0;
+		while (argv[iter][iter2])
+			write(1, &argv[iter][iter2++], 1);
+		write(1, "\n", 1);
+		iter++;
 	}
-	return (0);
 }
