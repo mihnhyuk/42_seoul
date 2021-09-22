@@ -6,12 +6,11 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:06:17 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 16:25:24 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/22 08:51:54 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 /*
 DESCRIPION:
@@ -33,13 +32,11 @@ char	*ft_strdup(char *src)
 	str_iter = 0;
 	while (src[str_iter])
 		str_iter++;
-	new_str = (char *)malloc(str_iter * sizeof (char));
-	if (new_str == 0)
+	new_str = (char *)malloc((str_iter + 1) * sizeof (char));
+	if (new_str == NULL)
 	{
-		printf("fail");
 		return (0);
 	}
-	printf("success");
 	str_iter = 0;
 	while (src[str_iter])
 	{

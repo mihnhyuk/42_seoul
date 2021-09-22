@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 19:59:09 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 09:30:49 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/22 12:45:31 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_base(char *base)
 	int	ascii[260];
 	int	idx;
 	int	tmp;
-
+	
 	idx = 0;
 	while (idx < 260)
 	{
