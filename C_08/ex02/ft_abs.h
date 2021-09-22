@@ -6,11 +6,11 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:38:03 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/22 15:57:00 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:07:14 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 # define FT_ABS_H
-# define ABS(Value) Value >= 0 ? Value : (Value == (int) - 2147483648 ? 0 : -Value)
+# define ABS(Value) Value >= 0 ? Value : -Value
 #endif
