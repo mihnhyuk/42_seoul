@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/21 07:48:00 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/22 08:52:38 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/22 09:15:28 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strstr(char *str, char *to_find)
-{
-	unsigned int	begin;
-	unsigned int	idx;
 
-	begin = 0;
-	if (!(*to_find))
-		return (str);
-	while (str[begin])
+#include <stdlib.h>
+
+int	*ft_range(int min, int max)
+{
+	int	*new_ary;
+	int	idx;
+
+	if (min >= max)
+		return (NULL);
+	new_ary = (int *)malloc((max - min) * (sizeof (int)));
+	if (new_ary == NULL)
+		return (NULL);
+	idx = 0;
+	while (idx < max - min)
 	{
-		idx = 0;
-		while (str[begin + idx] == to_find[idx])
-		{
-			if (!(to_find[idx + 1]))
-				return (str + begin);
-			idx++;
-		}
-		begin++;
+		new_ary[idx] = min + idx;
+		idx++;
 	}
-	return (str + begin);
+	return (new_ary);
 }

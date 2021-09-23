@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/21 07:48:00 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/22 15:38:03 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/22 17:07:14 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strstr(char *str, char *to_find)
-{
-	unsigned int	begin;
-	unsigned int	idx;
 
-	begin = 0;
-	if (!(*to_find))
-		return (str);
-	while (str[begin])
-	{
-		idx = 0;
-		while (str[begin + idx] == to_find[idx])
-		{
-			if (!(to_find[idx + 1]))
-				return (str + begin);
-			idx++;
-		}
-		begin++;
-	}
-	return (str + begin);
-}
+#ifndef FT_ABS_H
+# define FT_ABS_H
+# define ABS(Value) Value >= 0 ? Value : -Value
+#endif

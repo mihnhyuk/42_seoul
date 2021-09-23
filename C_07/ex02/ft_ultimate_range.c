@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/21 07:48:00 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/22 09:19:27 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/22 09:27:53 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strstr(char *str, char *to_find)
-{
-	unsigned int	begin;
-	unsigned int	idx;
 
-	begin = 0;
-	if (!(*to_find))
-		return (str);
-	while (str[begin])
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max)
+{
+	int	idx;
+
+	if (min >= max)
 	{
-		idx = 0;
-		while (str[begin + idx] == to_find[idx])
-		{
-			if (!(to_find[idx + 1]))
-				return (str + begin);
-			idx++;
-		}
-		begin++;
+		(*range) = NULL;
+		return (0);
 	}
-	return (str + begin);
+	(*range) = (int *)malloc((max - min) * sizeof (int));
+	if (*range == NULL)
+		return (-1);
+	idx = 0;
+	while (idx < max - min)
+	{
+		(*range)[idx] = min + idx;
+		idx++;
+	}
+	return (max - min);
 }

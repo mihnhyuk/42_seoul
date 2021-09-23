@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/21 07:48:00 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/22 15:25:49 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/22 15:31:27 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strstr(char *str, char *to_find)
-{
-	unsigned int	begin;
-	unsigned int	idx;
+#ifndef FT_H
+# define FT_H
 
-	begin = 0;
-	if (!(*to_find))
-		return (str);
-	while (str[begin])
-	{
-		idx = 0;
-		while (str[begin + idx] == to_find[idx])
-		{
-			if (!(to_find[idx + 1]))
-				return (str + begin);
-			idx++;
-		}
-		begin++;
-	}
-	return (str + begin);
-}
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
+
+#endif

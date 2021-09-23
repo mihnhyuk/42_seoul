@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 00:49:39 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/21 07:48:00 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/22 15:32:46 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/22 17:03:53 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strstr(char *str, char *to_find)
-{
-	unsigned int	begin;
-	unsigned int	idx;
 
-	begin = 0;
-	if (!(*to_find))
-		return (str);
-	while (str[begin])
-	{
-		idx = 0;
-		while (str[begin + idx] == to_find[idx])
-		{
-			if (!(to_find[idx + 1]))
-				return (str + begin);
-			idx++;
-		}
-		begin++;
-	}
-	return (str + begin);
-}
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
+# include <unistd.h>
+# define ODD_MSG "I have an odd number of arguments.\n"
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define EVEN(nbr) !(nbr % 2)
+# define TRUE 1
+# define FALSE 0
+# define SUCCESS 0
+
+typedef int	t_bool;
+
+#endif
