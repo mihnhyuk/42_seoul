@@ -6,43 +6,24 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 11:49:15 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 21:36:51 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/21 17:00:34 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_power(int nb, int power)
-{
-	int	iter;
-	int	result;
-
-	if (power < 0)
-		return (0);
-	if (power == 0)
-		return (1);
-	iter = 0;
-	result = 1;
-	while (iter < power)
-	{
-		result *= nb;
-		iter++;
-	}
-	return (result);
-}
-
 int	ft_sqrt(int nb)
 {
-	long long int	iter;
-	long long int	pow_iter;
+	int	iter;
+	int	pow_iter;
 
 	iter = 1;
 	pow_iter = 1;
-	while (pow_iter < (long long)nb)
+	while (pow_iter < nb && iter <= 46340 )
 	{
 		iter++;
-		pow_iter = ft_iterative_power(iter, 2);
+		pow_iter = iter * iter;
 	}
-	if (pow_iter == (long long int)nb)
-		return ((int)iter);
+	if (pow_iter == nb)
+		return (iter);
 	else
 		return (0);
 }

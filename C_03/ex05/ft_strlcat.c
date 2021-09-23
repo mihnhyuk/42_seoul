@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 01:13:08 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 22:55:21 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/21 11:01:41 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	strlen(char *str)
@@ -18,7 +18,6 @@ int	strlen(char *str)
 		idx++;
 	return (idx);
 }
-
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
