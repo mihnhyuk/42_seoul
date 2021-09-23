@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 11:56:27 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/23 11:15:17 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/15 21:31:32 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/16 00:24:48 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_is_prime(int nb)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int	iter;
+	int	idx;
 
-	if (nb == 2)
-		return (1);
-	if (nb <= 1)
-		return (0);
-	iter = 2;
-	while (iter * iter <= nb && iter < 46340)
+	idx = 0;
+	while (s1[idx] && s2[idx])
 	{
-		if (nb % iter == 0)
-		{
-			return (0);
-		}
-		iter++;
+		if (s1[idx] == s2[idx])
+			idx++;
+		else
+			return (s1[idx] - s2[idx]);
 	}
-	return (1);
+	return (s1[idx] - s2[idx]);
 }

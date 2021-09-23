@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 10:26:03 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/22 18:09:58 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:28:15 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -46,7 +46,7 @@ int	base_change(char c, char *base)
 **var[1] == to_int
 **var[2] == changed_char
 **var[3] == count_minus
- */
+*/
 
 int	ft_atoi_base(char *str, char *base)
 {

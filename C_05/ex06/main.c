@@ -3,5 +3,5 @@
 int	ft_is_prime(int nb);
 
 int	main(){
-	printf("%d", ft_is_prime(2147483647));
+	printf("%d", ft_is_prime(4219));
 }

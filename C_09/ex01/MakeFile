@@ -1,0 +1,27 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    MakeFile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/09/23 14:59:16 by minhjang          #+#    #+#              #
+#    Updated: 2021/09/23 18:58:57 by minhjang         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CC=gcc
+CLFAGS=-Wall Wextra - Werror
+NAME = libft.a
+INCLUDE = ./includes
+OFILES = ft_putchar.o, ft_swap.o, ft_putstr.o, ft_strlen.o, ft_strcmp.o
+
+SRC = ./scrs/ft_putchar.c ./srcs/ft_putstr.c ./srcs/ft_strcmp.c \
+	  ./srcs/ft_strlen.c ./srcs/ft_swap.c
+
+$(NAME) : $(SRC)
+	$(CC) $(CFLAGS) $(SRC) -I $(INCLUDE)ft.h
+	ar rc $(NAME) $(OFILES)
+
+clean:
+	rm $(OFILES)

@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 11:56:27 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/23 11:15:17 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/13 14:19:11 by minhjang          #+#    #+#             */
+/*   Updated: 2021/09/14 01:04:37 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_is_prime(int nb)
+void	ft_swap(int *a, int *b)
 {
-	int	iter;
+	int		tmp;
 
-	if (nb == 2)
-		return (1);
-	if (nb <= 1)
-		return (0);
-	iter = 2;
-	while (iter * iter <= nb && iter < 46340)
-	{
-		if (nb % iter == 0)
-		{
-			return (0);
-		}
-		iter++;
-	}
-	return (1);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }

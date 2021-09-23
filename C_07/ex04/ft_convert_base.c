@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 10:25:50 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/22 14:51:41 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/23 21:39:11 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		return (NULL);
 	input_num = ft_atoi_base(nbr, base_from);
 	result_len = integer_length_base(input_num, base_to);
-	result = (char *)malloc(result_len * sizeof (char));
+	result = (char *)malloc((result_len + 1) * sizeof (char));
 	if (result == NULL)
 		return (NULL);
 	nbr_base(input_num, base_to, &result);

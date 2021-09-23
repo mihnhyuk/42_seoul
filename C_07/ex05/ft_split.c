@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:04:12 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/22 23:16:57 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/23 21:45:17 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ char	**ft_split(char *str, char *charset)
 {
 	char	**result;
 
+	if (field_num(str, charset) == 0)
+	{
+		result = (char **)malloc(sizeof (char *));
+		result[0] = 0;
+		return (result);
+	}
 	result = (char **)malloc(field_num(str, charset) * sizeof (char *));
 	if (result == NULL)
 		return (NULL);

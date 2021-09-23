@@ -3,8 +3,8 @@
 char	**ft_split(char *str, char *charset);
 
 int	main(){
-	char *a = "hexllox2hellox3helxlo";
-	char *b = "x";
+	char *a = "a";
+	char *b = ", ";
 	char **result;
 	result = ft_split(a, b);
 	for(int i = 0 ; result[i] != 0 ; i++)
