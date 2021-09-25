@@ -3,7 +3,7 @@
 char	**ft_split(char *str, char *charset);
 
 int	main(){
-	char *a = "a";
+	char *a = "ab,,,a,,abc,,abcd";
 	char *b = ", ";
 	char **result;
 	result = ft_split(a, b);
