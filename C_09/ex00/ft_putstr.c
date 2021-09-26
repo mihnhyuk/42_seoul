@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 11:37:31 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/23 11:38:49 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/26 15:09:55 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	ft_putstr(char *str)
 {
 	int	idx;
-
+	
+	idx = 0;
 	while (str[idx])
 	{
 		write(1, &str[idx], 1);

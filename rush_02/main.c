@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
+/*   By: gaeukim <gaeukim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 21:31:32 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/16 00:24:48 by minhjang         ###   ########.fr       */
+/*   Created: 2021/09/26 15:17:25 by gaeukim           #+#    #+#             */
+/*   Updated: 2021/09/26 16:03:44 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	idx;
 
-	idx = 0;
-	while (s1[idx] && s2[idx])
+#include <unistd.h>
+
+void	ft_error(void)
+{
+	write(1, "Error\n", 6);
+}
+
+int	main(int argc, char *argv[])
+{
+	int	**result;
+
+	if (argc != 2)
 	{
-		if (s1[idx] == s2[idx])
-			idx++;
-		else
-			return (s1[idx] - s2[idx]);
+		ft_error();
+		return (0);
 	}
-	return (s1[idx] - s2[idx]);
+	input(argv[1]);
 }
