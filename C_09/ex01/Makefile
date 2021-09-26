@@ -1,27 +1,40 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    MakeFile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 14:59:16 by minhjang          #+#    #+#              #
-#    Updated: 2021/09/23 18:58:57 by minhjang         ###   ########.fr        #
+#    Updated: 2021/09/25 12:41:19 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=gcc
-CLFAGS=-Wall Wextra - Werror
-NAME = libft.a
 INCLUDE = ./includes
-OFILES = ft_putchar.o, ft_swap.o, ft_putstr.o, ft_strlen.o, ft_strcmp.o
+CFLAGS = -Wall -Wextra -Werror
+SRC = ./srcs/ft_putchar.c ./srcs/ft_putstr.c ./srcs/ft_strcmp.c ./srcs/ft_strlen.c ./srcs/ft_swap.c
+NAME = libft.a
+OFILES = ./srcs/ft_putchar.o ./srcs/ft_putstr.o ./srcs/ft_strcmp.o ./srcs/ft_strlen.o ./srcs/ft_swap.o
 
-SRC = ./scrs/ft_putchar.c ./srcs/ft_putstr.c ./srcs/ft_strcmp.c \
-	  ./srcs/ft_strlen.c ./srcs/ft_swap.c
 
-$(NAME) : $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -I $(INCLUDE)ft.h
+
+.PHONY: clean fclean all re .c.o
+
+.c.o :
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDE)
+
+$(NAME) : $(OFILES)
 	ar rc $(NAME) $(OFILES)
+$(OFILES) : $(SRC)
+	      $(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDE)
+
+
+all: $(NAME)
 
 clean:
-	rm $(OFILES)
+	rm -f $(OFILES)
+fclean: clean
+	rm -f $(NAME)
+re: fclean all
+

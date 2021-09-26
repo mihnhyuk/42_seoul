@@ -6,14 +6,14 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 11:36:24 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/23 11:39:01 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/26 13:25:10 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
 	int	idx;
-	
+
 	idx = 0;
 	while (str[idx])
 		idx++;
