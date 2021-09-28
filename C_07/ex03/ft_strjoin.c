@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 09:32:08 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/23 17:10:10 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/09/27 09:23:53 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 	idx = 0;
 	total_length = 0;
-	if (size ==0)
+	if (size == 0)
 		return ((char *)malloc(1));
 	while (idx < size)
 		total_length += ft_strlen(strs[idx++]);

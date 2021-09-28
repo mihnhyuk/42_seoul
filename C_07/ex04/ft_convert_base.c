@@ -41,14 +41,15 @@ int	check_base(char *base)
 	int	idx;
 	int	tmp;
 
-	idx = 0;
-	while (idx < 260)
+	idx = -1;
+	while (++idx < 260)
 	{
 		ascii[idx] = 1;
-		idx++;
 	}
-	idx = 0;
-	while (base[idx])
+	idx = -1;
+	if (!*base || !*(base + 1))
+		return (0);
+	while (base[++idx])
 	{
 		tmp = base[idx];
 		if (ascii[tmp])
@@ -59,7 +60,6 @@ int	check_base(char *base)
 			|| base[idx] == '\f' || base[idx] == '\n' || base[idx] == '\r'
 			|| base[idx] == '\v' || base[idx] == '\t')
 			return (0);
-		idx++;
 	}
 	return (1);
 }
