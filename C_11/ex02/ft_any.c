@@ -15,7 +15,7 @@ int	ft_any(char **tab, int (*f) (char *))
 	int	idx;
 
 	idx = 0;
-	while (tab)
+	while (tab[idx])
 	{
 		if ((*f)(tab[idx]))
 			return (1);
@@ -23,3 +23,4 @@ int	ft_any(char **tab, int (*f) (char *))
 	}
 	return (0);
 }
+

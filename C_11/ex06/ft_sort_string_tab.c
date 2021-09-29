@@ -30,7 +30,9 @@ void	ft_sort_string_tab(char **tab)
 				tab[j] = tab[j + 1];
 				tab[j + 1] = tmp;
 			}
+			j++;
 		}
+		i++;
 	}
 }
 

@@ -9,16 +9,19 @@
 /*   Updated: 2021/09/29 20:08:52 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 
 int	*ft_map(int *tab, int length, int (*f)(int))
 {
 	int	idx;
+	int	*output;
 
+	output = (int *)malloc(sizeof(int) * length);
 	idx = 0;
 	while (idx < length)
 	{
-		(*f)(tab[idx]);
+		output[idx] = (*f)(tab[idx]);
 		idx++;
 	}
-	return (tab);
+	return (output);
 }

@@ -9,6 +9,8 @@
 /*   Updated: 2021/09/29 20:11:26 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
+#include <string.h>
 
 void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char*))
 {
@@ -28,6 +30,8 @@ void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char*))
 				tab[j] = tab[j + 1];
 				tab[j + 1] = tmp;
 			}
+			j++;
 		}
+		i++;
 	}
 }
