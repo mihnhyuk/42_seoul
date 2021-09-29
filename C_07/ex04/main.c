@@ -3,7 +3,7 @@
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 int	main(){
-	char *a = "-+15";
+	char *a = "-+32";
 	char *base_from = "0123456789";
 	char *base_to = "01";
 	char *result;
