@@ -111,5 +111,5 @@ void	reverse_ary_cpy(char *ary, int size, char **result)
 	{
 		(*result)[idx] = ary[size - idx - 1];
 		idx++;
-	}	
+	}
 }
