@@ -49,9 +49,9 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	unsigned int	dest_sz;
 	unsigned int	src_sz;
 
-	dest_sz = strlen(dest);
+	dest_sz = ft_strlen(dest);
 	if (dest_sz >= size)
-		return (size + strlen(src));
+		return (size + ft_strlen(src));
 	idx = 0;
 	while (idx + dest_sz + 1 < size && src[idx])
 	{
@@ -59,7 +59,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 		idx++;
 	}
 	dest[idx] = '\0';
-	src_sz = strlen(src);
+	src_sz = ft_strlen(src);
 	return (dest_sz + src_sz);
 }
 
