@@ -16,12 +16,12 @@ char	*strchr(const char *s, int c)
 	{
 		if (*s == c)
 		{
-			return (s);
+			return ((char *)s);
 		}
 		s++;
 	}
 	if (c == '\0')
-		return (s);
+		return ((char *)s);
 	return (0);
 }
 
@@ -34,35 +34,35 @@ char	*strrchr(const char *s, int c)
 	{
 		if (*s == c)
 		{
-			result = s;
+			result = (char *)s;
 		}
 		s++;
 	}
 	if (c == '\0')
-		return (s);
+		return ((char *)s);
 	return (result);
 }
 
 char	*strnstr(const char *big, const char *little, unsigned int len)
 {
 	unsigned int	idx;
-	bool			flag;
+	int			flag;
 
 	while (*big && len > 0)
 	{
 		idx = 0;
-		flag = true;
+		flag = 1;
 		while (little[idx])
 		{
 			if (big[idx] != little[idx])
 			{
-				flag = false;
+				flag = 0;
 				break ;
 			}
 			idx++;
 		}
 		if (flag)
-			return (big);
+			return ((char *)big);
 		big++;
 		len--;
 	}

@@ -16,7 +16,7 @@ static int	check_set(char c, char const *set)
 {
 	while (set)
 	{
-		if (c == set)
+		if (c == *set)
 		{
 			return (1);
 		}
@@ -45,8 +45,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 			break ;
 	}
 	result = (char *)malloc(sizeof(char) * (idx + 2));
-	result[idx + 1] = NULL;
-	while (idx >= 0)
-		result[idx--] = s1[idx];
+	result[++idx] = '\0';
+	while (--idx >= 0)
+		result[idx] = s1[idx];
 	return (result);
 }

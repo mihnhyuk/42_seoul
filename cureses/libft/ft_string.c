@@ -20,7 +20,7 @@ unsigned int	ft_strlen(const char *str)
 	return (iter);
 }
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
 	unsigned int	idx;
 

@@ -13,7 +13,7 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		idx;
+	unsigned int		idx;
 	char	*new_str;
 
 	idx = 0;
@@ -25,6 +25,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		new_str[idx] = s[start + idx];
 		idx++;
 	}
-	new_str[idx] = NULL;
+	new_str[idx] = '\0';
 	return (new_str);
 }

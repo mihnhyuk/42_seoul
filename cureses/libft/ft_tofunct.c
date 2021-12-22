@@ -28,7 +28,7 @@ int	tolower(int c)
 	return (c);
 }
 
-static int	check_blank(char *str, int idx)
+static int	check_blank(const char *str, int idx)
 {
 	while (str[idx] == ' ' || str[idx] == '\f' || str[idx] == '\n'
 		|| str[idx] == '\r' || str[idx] == '\t' || str[idx] == '\v')
@@ -38,7 +38,7 @@ static int	check_blank(char *str, int idx)
 	return (idx);
 }
 
-static int	check_sign(char *str, int *idx)
+static int	check_sign(const char *str, int *idx)
 {
 	int	count_minus;
 

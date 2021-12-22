@@ -11,17 +11,19 @@
 /* ************************************************************************** */
 
 void	*ft_memcpy(void *restrict dest,
-	const void *restrict src, unsigned int n)
+	const void *src, unsigned int n)
 {
-	char	*tmp1;
-	char	*tmp2;
+	int		idx;
+	char	*tmp;
+	const char	*tmp2;
 
+	idx = 0;
+	tmp = (char *)dest;
 	tmp2 = src;
-	tmp1 = dest;
 	while (n > 0)
 	{
-		*tmp1 = *tmp2++;
-		tmp1++;
+		tmp[idx] = tmp2[idx];
+		idx++;
 		n--;
 	}
 	return (dest);
@@ -51,11 +53,12 @@ void	*ft_memmove(void *dest, const void *src, unsigned int n)
 		return (ft_memcpy(dest, src, n));
 	else
 	{
-		while (n >= 0)
+		while (n > 0)
 		{
 			*(tmp + n) = *(tmp2 + n);
 			n--;
 		}
+		*tmp = *tmp2;
 		return (dest);
 	}
 }
@@ -65,19 +68,21 @@ void	*ft_memchr(const void *s, int c, unsigned int n)
 	unsigned char	*tmp;
 
 	tmp = (unsigned char *)s;
-	while (n >= 0)
+	while (n > 0)
 	{
 		if (*tmp == (unsigned char)c)
 			return ((void *)tmp);
 		tmp++;
 		n--;
 	}
+	if (*tmp == (unsigned char)c)
+		return ((void *)tmp);
 	return (0);
 }
 
 int	ft_memcmp(const void *s1, const void *s2, unsigned int n)
 {
-	int				i;
+	unsigned int	i;
 	unsigned char	*tmp1;
 	unsigned char	*tmp2;
 

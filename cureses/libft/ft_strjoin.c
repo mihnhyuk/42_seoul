@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -34,6 +33,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		new_str[idx + s1len] = s2[idx];
 		idx++;
 	}
-	new_str[idx + s1len] = NULL;
+	new_str[idx + s1len] = '\0';
 	return (new_str);
 }
