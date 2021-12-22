@@ -42,7 +42,6 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	return (idx);
 }
 
-// subfunction 없에애함
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	idx;

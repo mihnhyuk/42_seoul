@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy
-(void *restrict dest, const void *restrict src, unsigned int n)
+void	*ft_memcpy(void *restrict dest,
+	const void *restrict src, unsigned int n)
 {
 	char	*tmp1;
 	char	*tmp2;
