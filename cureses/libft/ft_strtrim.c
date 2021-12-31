@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
+/*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 07:02:21 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/22 07:02:23 by minhjang         ###   ########.fr       */
+/*   Updated: 2021/12/31 18:06:53 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdlib.h>
+
 #include "libft.h"
 
 static int	check_set(char c, char const *set)
 {
-	while (set)
+	while (*set)
 	{
 		if (c == *set)
 		{
