@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 15:35:21 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/29 14:15:45 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:55:24 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 13:55:25 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_itoa(int n)
+unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
-	unsigned int	u_n;
-	int				sign;
-	int				idx;
-	char			*result;
-	char			tmp[20];
+	unsigned int	idx;
 
-	u_n = n;
-	if (n < 0)
-		u_n = n * (-1);
-	sign = (int)u_n / n;
 	idx = 0;
-	while (u_n > 0)
+	if (size == 0 )
 	{
-		tmp[idx++] = u_n % 10;
-		u_n /= 10;
+		while (src[idx])
+			idx++;
+		return (idx);
 	}
-	if (sign == -1)
-		tmp[idx++] = '-';
-	result = (char *)malloc(sizeof(char) * idx);
-	sign = 0;
-	while (idx >= 0)
-		result[sign++] = tmp[idx--];
-	return (result);
+	while ((idx < size - 1) && src[idx])
+	{
+		dest[idx] = src[idx];
+		idx++;
+	}
+	dest[idx] = '\0';
+	while (src[idx])
+		idx++;
+	return (idx);
 }

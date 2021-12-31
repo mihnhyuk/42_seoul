@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_etc.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhjang <minhjang@student.42seoul.kr      +#+  +:+       +#+        */
+/*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 21:44:40 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/16 21:44:43 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:39:19 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 13:39:39 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, unsigned int n)
+void	*ft_memset(void *s, int c, unsigned int n)
 {
-	char	*p;
+	char	*tmp;
 
-	p = (char *)s;
+	tmp = (char *)s;
 	while (n > 0)
 	{
-		*p = 0;
-		p++;
+		*tmp++ = c;
 		n--;
 	}
+	return (s);
 }

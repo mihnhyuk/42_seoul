@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 15:35:21 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/29 14:15:45 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:55:47 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 14:14:16 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_itoa(int n)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int	u_n;
-	int				sign;
-	int				idx;
-	char			*result;
-	char			tmp[20];
+	unsigned int	idx;
+	unsigned int	dest_sz;
+	unsigned int	src_sz;
 
-	u_n = n;
-	if (n < 0)
-		u_n = n * (-1);
-	sign = (int)u_n / n;
+	dest_sz = ft_strlen(dest);
+	if (dest_sz >= size)
+		return (size + ft_strlen(src));
 	idx = 0;
-	while (u_n > 0)
+	while (idx + dest_sz + 1 < size && src[idx])
 	{
-		tmp[idx++] = u_n % 10;
-		u_n /= 10;
+		dest[idx + dest_sz] = src[idx];
+		idx++;
 	}
-	if (sign == -1)
-		tmp[idx++] = '-';
-	result = (char *)malloc(sizeof(char) * idx);
-	sign = 0;
-	while (idx >= 0)
-		result[sign++] = tmp[idx--];
-	return (result);
+	dest[idx + dest_sz] = '\0';
+	src_sz = ft_strlen(src);
+	return (dest_sz + src_sz);
 }

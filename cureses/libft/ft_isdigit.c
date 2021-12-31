@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhjang  <minhjang@student.42seoul.k      +#+  +:+       +#+        */
+/*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 16:32:48 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 16:32:48 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:53:21 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 13:53:22 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putstr(char *str);
-
-int main(){
-	ft_putstr("bcder");
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

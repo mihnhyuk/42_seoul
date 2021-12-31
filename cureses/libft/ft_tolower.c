@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhjang  <minhjang@student.42seoul.k      +#+  +:+       +#+        */
+/*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 16:32:48 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 16:32:48 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 14:13:19 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 16:22:33 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putstr(char *str);
-
-int main(){
-	ft_putstr("bcder");
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+	{
+		c += 'a' - 'A';
+	}
+	return (c);
 }

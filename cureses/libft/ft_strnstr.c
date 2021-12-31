@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 15:35:21 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/29 14:15:45 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:57:01 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 14:42:01 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_itoa(int n)
+char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 {
-	unsigned int	u_n;
-	int				sign;
-	int				idx;
-	char			*result;
-	char			tmp[20];
+	unsigned int	idx;
+	int				flag;
 
-	u_n = n;
-	if (n < 0)
-		u_n = n * (-1);
-	sign = (int)u_n / n;
-	idx = 0;
-	while (u_n > 0)
+	while (*big && len > 0)
 	{
-		tmp[idx++] = u_n % 10;
-		u_n /= 10;
+		idx = 0;
+		flag = 1;
+		while (little[idx])
+		{
+			if (big[idx] != little[idx] || idx >= len)
+			{
+				flag = 0;
+				break ;
+			}
+			idx++;
+		}
+		if (flag)
+			return ((char *)big);
+		big++;
+		len--;
 	}
-	if (sign == -1)
-		tmp[idx++] = '-';
-	result = (char *)malloc(sizeof(char) * idx);
-	sign = 0;
-	while (idx >= 0)
-		result[sign++] = tmp[idx--];
-	return (result);
+	return (0);
 }

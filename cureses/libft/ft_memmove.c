@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 15:35:21 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/29 14:15:45 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:39:45 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 13:28:06 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_itoa(int n)
+void	*ft_memmove(void *dest, const void *src, unsigned int n)
 {
-	unsigned int	u_n;
-	int				sign;
-	int				idx;
-	char			*result;
-	char			tmp[20];
+	char	*tmp;
+	char	*tmp2;
 
-	u_n = n;
-	if (n < 0)
-		u_n = n * (-1);
-	sign = (int)u_n / n;
-	idx = 0;
-	while (u_n > 0)
+	tmp = (char *)dest;
+	tmp2 = (char *)src;
+	if (!dest && !src)
+		return (NULL);
+	if (dest < src || dest >= src + n)
+		return (ft_memcpy(dest, src, n));
+	else
 	{
-		tmp[idx++] = u_n % 10;
-		u_n /= 10;
+		while (n > 0)
+		{
+			n--;
+			*(tmp + n) = *(tmp2 + n);
+		}
+		*tmp = *tmp2;
+		return (dest);
 	}
-	if (sign == -1)
-		tmp[idx++] = '-';
-	result = (char *)malloc(sizeof(char) * idx);
-	sign = 0;
-	while (idx >= 0)
-		result[sign++] = tmp[idx--];
-	return (result);
 }

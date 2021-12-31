@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhjang  <minhjang@student.42seoul.k      +#+  +:+       +#+        */
+/*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 16:32:48 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 16:32:48 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:55:12 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 13:55:12 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putstr(char *str);
+unsigned int	ft_strlen(const char *str)
+{
+	int	iter;
 
-int main(){
-	ft_putstr("bcder");
+	iter = 0;
+	while (str[iter])
+		iter++;
+	return (iter);
 }

@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhjang  <minhjang@student.42seoul.k      +#+  +:+       +#+        */
+/*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 16:32:48 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 16:32:48 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:53:49 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 13:54:55 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putstr(char *str);
-
-int main(){
-	ft_putstr("bcder");
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	else
+		return (0);
 }

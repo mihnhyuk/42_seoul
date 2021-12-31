@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 15:35:21 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/29 14:15:45 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:55:44 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 14:55:39 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_itoa(int n)
+int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
-	unsigned int	u_n;
-	int				sign;
-	int				idx;
-	char			*result;
-	char			tmp[20];
+	unsigned int	idx;
 
-	u_n = n;
-	if (n < 0)
-		u_n = n * (-1);
-	sign = (int)u_n / n;
 	idx = 0;
-	while (u_n > 0)
-	{
-		tmp[idx++] = u_n % 10;
-		u_n /= 10;
-	}
-	if (sign == -1)
-		tmp[idx++] = '-';
-	result = (char *)malloc(sizeof(char) * idx);
-	sign = 0;
-	while (idx >= 0)
-		result[sign++] = tmp[idx--];
-	return (result);
+	if (n == 0)
+		return (0);
+	while ((s1[idx] && s2[idx]) && idx + 1 < n && s1[idx] == s2[idx])
+		idx++;
+	return ((const unsigned char)s1[idx] - (const unsigned char)s2[idx]);
 }

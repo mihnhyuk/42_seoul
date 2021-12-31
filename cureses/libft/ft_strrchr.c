@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minhjang  <minhjang@student.42seoul.k      +#+  +:+       +#+        */
+/*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 16:32:48 by minhjang          #+#    #+#             */
-/*   Updated: 2021/09/20 16:32:48 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:56:46 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 13:56:52 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putstr(char *str);
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*result;
 
-int main(){
-	ft_putstr("bcder");
+	result = 0;
+	while (*s)
+	{
+		if (*s == c)
+		{
+			result = (char *)s;
+		}
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (result);
 }

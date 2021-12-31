@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 15:35:21 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/29 14:15:45 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 14:07:16 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 14:15:13 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_itoa(int n)
+char	*ft_strdup(char *src)
 {
-	unsigned int	u_n;
-	int				sign;
-	int				idx;
-	char			*result;
-	char			tmp[20];
+	 int	str_iter;
+	char	*new_str;
 
-	u_n = n;
-	if (n < 0)
-		u_n = n * (-1);
-	sign = (int)u_n / n;
-	idx = 0;
-	while (u_n > 0)
+	str_iter = 0;
+	while (src[str_iter])
+		str_iter++;
+	new_str = (char *)malloc((str_iter + 1) * sizeof (char));
+	if (new_str == NULL)
 	{
-		tmp[idx++] = u_n % 10;
-		u_n /= 10;
+		return (0);
 	}
-	if (sign == -1)
-		tmp[idx++] = '-';
-	result = (char *)malloc(sizeof(char) * idx);
-	sign = 0;
-	while (idx >= 0)
-		result[sign++] = tmp[idx--];
-	return (result);
+	str_iter = 0;
+	while (src[str_iter])
+	{
+		new_str[str_iter] = src[str_iter];
+		str_iter++;
+	}
+	new_str[str_iter] = '\0';
+	return (new_str);
 }
