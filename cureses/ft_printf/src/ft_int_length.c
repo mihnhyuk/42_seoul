@@ -1,21 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_int_length.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 17:01:16 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/25 04:13:12 by minhjang         ###   ########.fr       */
+/*   Created: 2022/03/25 01:45:29 by minhjang          #+#    #+#             */
+/*   Updated: 2022/03/25 03:49:03 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+int	ft_int_length(int n, int base)
+{
+	int	length;
 
-#include<stdarg.h>
-int		ft_printf(const char *, ...);
-int		get_token_num(const char *input_str);
-char	*var_to_token(char** token, const char format_char, va_list ap);
+	length = 0;
+	if (n < 0)
+	{
+		length++;
+		n *= -1;
+	}
+	while (n + 1 > base)
+	{
+		length++;
+		n /= base;
+	}
+	length++;
+	return (length);
+}
 
-#endif
+int	ft_unsigned_int_length(unsigned int n, unsigned int base)
+{
+	int	length;
+
+	length = 0;
+	while (n + 1 > base)
+	{
+		length++;
+		n /= base;
+	}
+	length++;
+	return (length);
+}

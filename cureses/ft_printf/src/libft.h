@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 17:01:16 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/25 04:13:12 by minhjang         ###   ########.fr       */
+/*   Created: 2022/03/25 01:52:21 by minhjang          #+#    #+#             */
+/*   Updated: 2022/03/25 03:22:39 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
-#include<stdarg.h>
-int		ft_printf(const char *, ...);
-int		get_token_num(const char *input_str);
-char	*var_to_token(char** token, const char format_char, va_list ap);
+int		ft_int_length(int n, int base);
+int		ft_unsigned_int_length(unsigned int n, int base);
+char	*ft_strdup(char *src);
 
 #endif

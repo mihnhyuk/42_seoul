@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 17:01:16 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/25 04:13:12 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 14:07:16 by minhjang          #+#    #+#             */
+/*   Updated: 2022/03/25 03:11:32 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#include <stdlib.h>
 
-#include<stdarg.h>
-int		ft_printf(const char *, ...);
-int		get_token_num(const char *input_str);
-char	*var_to_token(char** token, const char format_char, va_list ap);
+char	*ft_strdup(char *src)
+{
+	int		str_iter;
+	char	*new_str;
 
-#endif
+	str_iter = 0;
+	while (src[str_iter])
+		str_iter++;
+	new_str = (char *)malloc((str_iter + 1) * sizeof (char));
+	if (new_str == NULL)
+		return (0);
+	str_iter = 0;
+	while (src[str_iter])
+	{
+		new_str[str_iter] = src[str_iter];
+		str_iter++;
+	}
+	new_str[str_iter] = '\0';
+	return (new_str);
+}
