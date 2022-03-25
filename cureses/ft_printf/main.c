@@ -6,25 +6,12 @@
 
 
 
-int	ft_printf(const char * str, ...)
+
+int main()
 {
-	va_list ap;
-	va_start(ap, str);
+	int a = 31;
+	char b = 'c';
 
-	char *token;
-	token = NULL;
-	var_to_token(&token, 'X', ap);
-
-	printf("%s\n", token);
-
-	free(token);
-
-	return(1);
-}
-
-int main(){
-	int a = 12;
-
-	ft_printf("123", a);
+	ft_printf("%i %s %% % ft_printf: %d %c\n", "string",3, a, b);
 
 }

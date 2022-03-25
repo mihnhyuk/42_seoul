@@ -6,19 +6,21 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 01:45:29 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/25 03:49:03 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/03/25 13:20:34 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_int_length(int n, int base)
+int	ft_int_length(int nb, unsigned int base)
 {
-	int	length;
+	int				length;
+	unsigned int	n;
 
 	length = 0;
-	if (n < 0)
+	n = nb;
+	if (nb < 0)
 	{
 		length++;
-		n *= -1;
+		n = nb * (-1);
 	}
 	while (n + 1 > base)
 	{

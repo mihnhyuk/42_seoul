@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 16:44:49 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/16 12:17:47 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:55:12 by minhjang          #+#    #+#             */
+/*   Updated: 2022/03/25 15:47:25 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-void	ft_putchar_fd(char c, int fd)
+unsigned int	ft_strlen(const char *str)
 {
-	write(fd, &c, 1);
+	int	iter;
+
+	iter = 0;
+	while (str[iter])
+		iter++;
+	return (iter);
 }

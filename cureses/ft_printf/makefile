@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/03/25 03:47:21 by minhjang         ###   ########.fr        #
+#    Updated: 2022/03/25 15:48:00 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,12 @@ SRCS =	ft_printf.c \
 
 TEST =	main.c \
 		var_to_token.c \
+		ft_printf.c \
+		utils.c \
 		$(LIBPATH)ft_int_length.c \
 		$(LIBPATH)ft_strdup.c \
+		$(LIBPATH)ft_putstr_fd.c \
+		$(LIBPATH)ft_strlen.c \
 
 INCLUDE = ft_printf.h ./src/libft.h
 

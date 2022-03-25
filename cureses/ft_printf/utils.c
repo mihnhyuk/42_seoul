@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:17:19 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/22 17:57:24 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:55:33 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include <stdarg.h>
 
 int	get_token_num(const char *input_str);
-int	check_format(const char);
+int	check_format(const char c);
 
 int	get_token_num(const char *input_str)
 {
 	int	token_num;
-	int idx;
+	int	idx;
 	int	format;
 
-	token_num = 1;
+	token_num = 2;
 	idx = 0;
 	while (input_str[idx])
 	{
@@ -39,7 +39,7 @@ int	get_token_num(const char *input_str)
 	return (token_num);
 }
 
-int check_format(const char c)
+int	check_format(const char c)
 {
 	if (c == 'c')
 		return (1);
@@ -60,5 +60,5 @@ int check_format(const char c)
 	else if (c == '%')
 		return (9);
 	else
-		return(-1);
+		return (-1);
 }
