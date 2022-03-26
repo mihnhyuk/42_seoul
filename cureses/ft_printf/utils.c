@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:17:19 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/25 16:55:33 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/03/26 10:50:44 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int	get_token_num(const char *input_str);
 int	check_format(const char c);
+int	ft_int_length(int nb, unsigned int base);
+int	ft_unsigned_int_length(unsigned int n, unsigned int base);
 
 int	get_token_num(const char *input_str)
 {
@@ -61,4 +63,39 @@ int	check_format(const char c)
 		return (9);
 	else
 		return (-1);
+}
+
+int	ft_int_length(int nb, unsigned int base)
+{
+	int				length;
+	unsigned int	n;
+
+	length = 0;
+	n = nb;
+	if (nb < 0)
+	{
+		length++;
+		n = nb * (-1);
+	}
+	while (n + 1 > base)
+	{
+		length++;
+		n /= base;
+	}
+	length++;
+	return (length);
+}
+
+int	ft_unsigned_int_length(unsigned int n, unsigned int base)
+{
+	int	length;
+
+	length = 0;
+	while (n + 1 > base)
+	{
+		length++;
+		n /= base;
+	}
+	length++;
+	return (length);
 }

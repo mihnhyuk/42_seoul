@@ -2,16 +2,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
+#include"ft_printf.h"
 
-
-
-
-
-int main()
+int	main(void)
 {
-	int a = 31;
-	char b = 'c';
+	int		a;
+	char	b;
 
-	ft_printf("%i %s %% % ft_printf: %d %c\n", "string",3, a, b);
-
+	a = 31;
+	b = 'c';
+	ft_printf("%i %s %% ft_printf: %d %c\n", 2, "string", a, b);
 }
