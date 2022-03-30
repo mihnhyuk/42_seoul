@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 17:06:20 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/30 17:57:02 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/03/30 18:01:31 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,27 @@ int	ft_printf(const char *str, ...)
 int	write_token(char **token, const char *str, va_list ap, int *tk_n)
 {
 	int	idx;
-	int	tk_idx;
+	int	t_i;
 	int	len;
 	int	tk_len;
 
 	len = 0;
-	tk_idx = 0;
+	t_i = 0;
 	idx = 0;
 	while (str[idx])
 	{
-		if (tk_idx >= tk_n[0] - 1)
+		if (t_i >= tk_n[0] - 1)
 			return (-1);
-		if (str[idx++] == '%')
+		if (str[idx] == '%')
 		{
-			tk_len = v_to_tk(&(token[tk_idx]), str[idx], ap, &tk_n[tk_idx + 1]);
-			idx += 1;
-			tk_idx++;
+			tk_len = v_to_tk(&(token[t_i]), str[idx + 1], ap, &tk_n[t_i + 1]);
+			idx += 2;
+			t_i++;
 		}
 		else
-			tk_len = regstr_to_token(&(token[tk_idx++]), str, &idx);
+			tk_len = regstr_to_token(&(token[t_i++]), str, &idx);
 		if (tk_len == -1)
-			return (free_all(token, tk_idx - 1));
+			return (free_all(token, t_i - 1));
 		len += tk_len;
 	}
 	return (len);

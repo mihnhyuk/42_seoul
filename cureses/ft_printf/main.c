@@ -7,5 +7,5 @@
 
 int	main(void)
 {
-	ft_printf("the '%%%%p is used to print a %% in printf");
+	ft_printf("1, 2, 3, -d test, testing, 0.4s sound, 1, 2, 3xp, sound, -*dtest");
 }
