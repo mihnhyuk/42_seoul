@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 17:06:20 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/25 16:54:32 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:57:02 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,70 @@
 #include<stdlib.h>
 #include"ft_printf.h"
 #include"./src/libft.h"
+#include<unistd.h>
 
 int		ft_printf(const char *str, ...);
-void	write_token(char **token, const char *str, va_list ap);
-void	regstr_to_token(char **token, const char *str, int *idx);
-void	print_token(char **token);
+int		write_token(char **token, const char *str,
+			 va_list ap, int *token_num);
+int		regstr_to_token(char **token, const char *str, int *idx);
+void	print_token(char **token, int *token_num);
+int		free_all(char **token, int err_idx);
 
 int	ft_printf(const char *str, ...)
 {
-	int		token_num;
+	int		*token_num;
 	char	**token;
+	int		len;
 	va_list	ap;
 
 	va_start(ap, str);
-	token_num = get_token_num(str);
-	token = (char **)malloc(token_num * sizeof(char *));
-	write_token(token, str, ap);
-	print_token(token);
+	len = get_token_num(str);
+	token = (char **)malloc(len * sizeof(char *));
+	token_num = (int *)malloc((len + 1) * sizeof(int *));
+	if (token == NULL || token_num == NULL)
+		return (-1);
+	token_num[0] = len;
+	token[token_num[0] - 1] = NULL;
+	len = write_token(token, str, ap, token_num);
+	if (len == -1)
+		return (-1);
+	print_token(token, token_num);
 	va_end(ap);
-	return (0);
+	free_all(token, token_num[0] - 2);
+	free(token_num);
+	return (len);
 }
 
-void	write_token(char **token, const char *str, va_list ap)
+int	write_token(char **token, const char *str, va_list ap, int *tk_n)
 {
 	int	idx;
-	int	token_idx;
+	int	tk_idx;
+	int	len;
+	int	tk_len;
 
-	token_idx = 0;
+	len = 0;
+	tk_idx = 0;
 	idx = 0;
 	while (str[idx])
 	{
-		if (str[idx] == '%')
+		if (tk_idx >= tk_n[0] - 1)
+			return (-1);
+		if (str[idx++] == '%')
 		{
-			var_to_token(&(token[token_idx]), str[idx + 1], ap);
-			idx += 2;
+			tk_len = v_to_tk(&(token[tk_idx]), str[idx], ap, &tk_n[tk_idx + 1]);
+			idx += 1;
+			tk_idx++;
 		}
 		else
-			regstr_to_token(&(token[token_idx]), str, &idx);
-		token_idx++;
+			tk_len = regstr_to_token(&(token[tk_idx++]), str, &idx);
+		if (tk_len == -1)
+			return (free_all(token, tk_idx - 1));
+		len += tk_len;
 	}
+	return (len);
 }
 
-void	regstr_to_token(char **token, const char *str, int *idx)
+int	regstr_to_token(char **token, const char *str, int *idx)
 {
 	int	start;
 	int	i;
@@ -64,6 +86,8 @@ void	regstr_to_token(char **token, const char *str, int *idx)
 	while (str[*idx] && str[*idx] != '%')
 		(*idx)++;
 	*token = (char *)malloc((((*idx) - start + 1) * sizeof(char)));
+	if (*token == NULL)
+		return (0);
 	i = 0;
 	while (start != *idx)
 	{
@@ -71,14 +95,32 @@ void	regstr_to_token(char **token, const char *str, int *idx)
 		start++;
 		i++;
 	}
-	(*token)[i] = 0;
+	(*token)[i] = '\0';
+	return (ft_strlen(*token));
 }
 
-void	print_token(char **token)
+void	print_token(char **token, int *token_num)
 {
-	while (*token)
+	int	idx;
+
+	idx = 0;
+	while (token[idx])
 	{
-		ft_putstr_fd(*token, 1);
-		token++;
+		if (token_num[idx + 1] == 1)
+			write(1, token[idx], 1);
+		else
+			ft_putstr_fd(token[idx], 1);
+		idx++;
 	}
+}
+
+int	free_all(char **token, int err_idx)
+{
+	while (err_idx >= 0)
+	{
+		free(token[err_idx]);
+		err_idx--;
+	}
+	free(token);
+	return (-1);
 }

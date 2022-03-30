@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:10:49 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/26 16:38:42 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/03/30 16:38:35 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*hex_to_token(va_list ap)
 	input = va_arg(ap, int);
 	idx = ft_unsigned_int_length(input, 16);
 	ary[idx] = '\0';
-	while (input > 16)
+	while (input > 15)
 	{
 		ary[--idx] = hex[input % 16];
 		input /= 16;
@@ -93,7 +93,7 @@ char	*hex_to_token_upper(va_list ap)
 	input = va_arg(ap, int);
 	idx = ft_unsigned_int_length(input, 16);
 	ary[idx] = '\0';
-	while (input > 16)
+	while (input > 15)
 	{
 		ary[--idx] = hex[input % 16];
 		input /= 16;

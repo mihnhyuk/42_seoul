@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/03/26 16:12:17 by minhjang         ###   ########.fr        #
+#    Updated: 2022/03/30 17:20:49 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,5 +44,5 @@ fclean: clean
 	rm -f $(TARGET)
 re: fclean all
 
-test:
-	$(CC) $(CFLAGS)  main.c -L. -lftprintf
+test: re
+	$(CC) $(CFLAGS) main.c -L. -lftprintf

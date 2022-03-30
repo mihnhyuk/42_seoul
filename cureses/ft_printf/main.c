@@ -3,13 +3,9 @@
 #include<stdlib.h>
 #include<unistd.h>
 #include"ft_printf.h"
+#include<string.h>
 
 int	main(void)
 {
-	int		a;
-	char	b;
-
-	a = 31;
-	b = 'c';
-	ft_printf("%i %s %% ft_printf: %d %c\n", 2, "string", a, b);
+	ft_printf("the '%%%%p is used to print a %% in printf");
 }

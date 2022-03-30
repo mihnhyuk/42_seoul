@@ -2,7 +2,8 @@
 	"files.associations": {
 		"unistd.h": "c",
 		"string.h": "c",
-		"stdarg.h": "c"
+		"stdarg.h": "c",
+		"ft_printf.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }
