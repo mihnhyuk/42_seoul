@@ -6,14 +6,13 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:10:49 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/30 16:38:35 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/04/01 19:59:09 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdarg.h>
 #include<stdlib.h>
-#include"ft_printf.h"
-#include"src/libft.h"
+#include"../includes/ft_printf.h"
+#include"../libft/libft.h"
 
 char	*int_to_token(va_list ap);
 char	*unsigned_int_to_token(va_list ap);

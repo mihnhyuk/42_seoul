@@ -6,12 +6,12 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:17:19 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/30 17:52:55 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/04/01 19:59:16 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdarg.h>
+#include"../includes/ft_printf.h"
+#include"../libft/libft.h"
 
 int	get_token_num(const char *input_str);
 int	check_format(const char c);

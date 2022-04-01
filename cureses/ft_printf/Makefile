@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/03/30 17:20:49 by minhjang         ###   ########.fr        #
+#    Updated: 2022/04/01 22:32:12 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,34 +14,43 @@ CC = gcc
 CFLAGS = -Werror -Wall -Wextra
 FSAN = -fsanitize=address
 OBJECT = $(SRCS:%.c=%.o)
-LIBPATH = ./src/
-TARGET = libftprintf.a
+SRCPATH = ./src/
+LIBPATH = ./libft/
+LIB = $(LIBPATH)libft.a
+NAME = libftprintf.a
 
 SRCS =	ft_printf.c \
-		utils.c \
-		var_to_token.c \
-		var_to_token2.c \
-		$(LIBPATH)ft_putstr_fd.c \
-		$(LIBPATH)ft_strdup.c \
-		$(LIBPATH)ft_strlen.c \
+		$(SRCPATH)utils.c \
+		$(SRCPATH)var_to_token.c \
+		$(SRCPATH)var_to_token2.c \
 
-INCLUDE = ft_printf.h ./src/libft.h
+INCLUDE = ./includes/ft_printf.h $(LIBPATH)libft.h
 
 .SUFFIXES: .c .o
 
 .PHONY: all clean fclean re test
 
-$(TARGET) : $(OBJECT)
-	ar rc $(TARGET) $(OBJECT)
+$(NAME) : $(OBJECT) $(LIB)
+	cp $(LIB) $(NAME)
+	ar rcs $(NAME) $(OBJECT)
 
-.c.o :
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+$(LIB) :
+	cd $(LIBPATH) && $(MAKE) all
 
-all: $(TARGET)
+$(OBJECT) :
+	$(CC) $(CFLAGS) -c $(@:.o=.c) -o $@ -L./libft -lft
+
+
+all: $(NAME)
+
 clean:
 	rm -f $(OBJECT)
+	cd $(LIBPATH) && $(MAKE) clean
+
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
+	cd $(LIBPATH) && $(MAKE) fclean
+
 re: fclean all
 
 test: re

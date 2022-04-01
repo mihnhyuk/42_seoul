@@ -6,14 +6,14 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 17:06:20 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/30 18:01:31 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/04/01 19:57:19 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdarg.h>
 #include<stdlib.h>
-#include"ft_printf.h"
-#include"./src/libft.h"
+#include"./includes/ft_printf.h"
+#include"./libft/libft.h"
 #include<unistd.h>
 
 int		ft_printf(const char *str, ...);

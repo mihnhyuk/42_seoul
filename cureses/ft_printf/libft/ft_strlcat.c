@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 14:07:16 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/30 16:14:53 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:55:47 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 14:14:16 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(char *src)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int		str_iter;
-	char	*new_str;
+	unsigned int	idx;
+	unsigned int	dest_sz;
+	unsigned int	src_sz;
 
-	str_iter = 0;
-	while (src[str_iter])
-		str_iter++;
-	new_str = (char *)malloc((str_iter + 1) * sizeof (char));
-	if (new_str == NULL)
-		return (0);
-	str_iter = 0;
-	while (src[str_iter])
+	dest_sz = ft_strlen(dest);
+	if (dest_sz >= size)
+		return (size + ft_strlen(src));
+	idx = 0;
+	while (idx + dest_sz + 1 < size && src[idx])
 	{
-		new_str[str_iter] = src[str_iter];
-		str_iter++;
+		dest[idx + dest_sz] = src[idx];
+		idx++;
 	}
-	new_str[str_iter] = '\0';
-	return (new_str);
+	dest[idx + dest_sz] = '\0';
+	src_sz = ft_strlen(src);
+	return (dest_sz + src_sz);
 }
