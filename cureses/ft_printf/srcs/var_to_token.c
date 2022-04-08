@@ -6,14 +6,18 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 19:52:36 by minhjang          #+#    #+#             */
-/*   Updated: 2022/03/30 17:57:20 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/04/01 19:59:12 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdarg.h>
 #include<stdlib.h>
+<<<<<<< HEAD:cureses/ft_printf/srcs/var_to_token.c
 #include"ft_printf.h"
 #include"lib/libft.h"
+=======
+#include"../includes/ft_printf.h"
+#include"../libft/libft.h"
+>>>>>>> bcbcbdc7d2c460a80d8d54621763e93e44001a60:cureses/ft_printf/src/var_to_token.c
 
 char	*char_to_token(va_list ap, int *token_num);
 char	*str_to_token(va_list ap);
