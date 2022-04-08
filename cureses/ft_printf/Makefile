@@ -11,9 +11,10 @@
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -c -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra
 FSAN = -fsanitize=address
 OBJECT = $(SRCS:%.c=%.o)
+
 SRCPATH = ./src/
 LIBPATH = ./libft/
 LIB = $(LIBPATH)libft.a
@@ -39,8 +40,7 @@ $(LIB) :
 	cd $(LIBPATH) && $(MAKE) all
 
 $(OBJECT) :
-	$(CC) $(CFLAGS) $(@:.o=.c) -o $@ -L./libft -lft
-
+	$(CC) $(CFLAGS) -c $(@:.o=.c) -o $@
 
 all: $(NAME)
 

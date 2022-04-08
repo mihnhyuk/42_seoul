@@ -12,11 +12,7 @@
 
 #include<stdarg.h>
 #include<stdlib.h>
-<<<<<<< HEAD
-#include"ft_printf.h"
-=======
 #include"./includes/ft_printf.h"
->>>>>>> bcbcbdc7d2c460a80d8d54621763e93e44001a60
 #include"./libft/libft.h"
 #include<unistd.h>
 

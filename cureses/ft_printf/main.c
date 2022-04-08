@@ -6,5 +6,6 @@
 
 int	main(void)
 {
-	ft_printf("1, 2, 3, -d test, testing, 0.4s sound, 1, 2, 3xp, sound, -*dtest");
+	ft_printf("%p\n", (void *)0);
+	printf("%p\n", (void *)0);
 }

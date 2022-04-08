@@ -11,13 +11,8 @@
 /* ************************************************************************** */
 
 #include<stdlib.h>
-<<<<<<< HEAD:cureses/ft_printf/srcs/var_to_token.c
-#include"ft_printf.h"
-#include"lib/libft.h"
-=======
 #include"../includes/ft_printf.h"
 #include"../libft/libft.h"
->>>>>>> bcbcbdc7d2c460a80d8d54621763e93e44001a60:cureses/ft_printf/src/var_to_token.c
 
 char	*char_to_token(va_list ap, int *token_num);
 char	*str_to_token(va_list ap);
@@ -88,8 +83,6 @@ char	*pointer_to_token(va_list ap)
 
 	idx = 2;
 	p_to_i = (unsigned long long int)va_arg(ap, void *);
-	if (p_to_i == 0)
-		return (ft_strdup("(nil)"));
 	tmp = p_to_i;
 	while (tmp > 15)
 	{

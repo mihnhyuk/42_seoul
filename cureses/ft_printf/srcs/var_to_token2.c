@@ -11,13 +11,8 @@
 /* ************************************************************************** */
 
 #include<stdlib.h>
-<<<<<<< HEAD:cureses/ft_printf/srcs/var_to_token2.c
-#include"ft_printf.h"
-#include"lib/libft.h"
-=======
 #include"../includes/ft_printf.h"
 #include"../libft/libft.h"
->>>>>>> bcbcbdc7d2c460a80d8d54621763e93e44001a60:cureses/ft_printf/src/var_to_token2.c
 
 char	*int_to_token(va_list ap);
 char	*unsigned_int_to_token(va_list ap);
