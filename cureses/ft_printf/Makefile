@@ -11,37 +11,42 @@
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -c -Werror -Wall -Wextra
 FSAN = -fsanitize=address
 OBJECT = $(SRCS:%.c=%.o)
-LIBPATH = ./src/
-TARGET = libftprintf.a
+LIBPATH = ./libft
+LIB = ft
+NAME = libftprintf.a
 
+SRCPATH = ./srcs/
 SRCS =	ft_printf.c \
-		utils.c \
-		var_to_token.c \
-		var_to_token2.c \
-		$(LIBPATH)ft_putstr_fd.c \
-		$(LIBPATH)ft_strdup.c \
-		$(LIBPATH)ft_strlen.c \
+		$(SRCPATH)utils.c \
+		$(SRCPATH)var_to_token.c \
+		$(SRCPATH)var_to_token2.c \
 
-INCLUDE = ft_printf.h ./src/libft.h
+INCLUDE = -I./includes
 
 .SUFFIXES: .c .o
 
 .PHONY: all clean fclean re test
 
-$(TARGET) : $(OBJECT)
-	ar rc $(TARGET) $(OBJECT)
 
-.c.o :
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+$(NAME) : $(OBJECT)
+	ar rc $(NAME) $(OBJECT) -L$(LIBPATH) -l$(LIB)
 
-all: $(TARGET)
+$(OBJECT) : $(SRCS) $(LIB)
+	$(CC) $(CFLAGS) $(@.o:.c) -includes $(INCLUDE)
+
+$(LIB) :
+	cd $(LIBPATH) && $(MAKE) all
+
+all: $(NAME)
 clean:
 	rm -f $(OBJECT)
+	cd $(LIBPATH) && $(MAKE) clean
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
+	cd $(LIBPATH) && $(MAKE) fclean
 re: fclean all
 
 test: re

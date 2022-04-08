@@ -13,7 +13,7 @@
 #include<stdarg.h>
 #include<stdlib.h>
 #include"ft_printf.h"
-#include"./src/libft.h"
+#include"./libft/libft.h"
 #include<unistd.h>
 
 int		ft_printf(const char *str, ...);
