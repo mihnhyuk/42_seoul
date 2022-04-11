@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_function.c                                    :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 13:02:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/04/11 15:30:24 by minhjang         ###   ########.fr       */
+/*   Created: 2022/04/11 14:42:23 by minhjang          #+#    #+#             */
+/*   Updated: 2022/04/11 15:04:06 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-void    ss(t_stack *a, t_stack *b)
+t_list  *new_node()
 {
-    swap(a);
-    swap(b);
-}
+    t_list      *n;
+    static int  idx;
 
-void    pa(t_stack *a, t_stack *b)
-{
-    if(b->top != -1)
-        push(a, pop(b));
-}
-
-void    pb(t_stack *b, t_stack *a)
-{
-    if(b->top != -1)
-        push(a, pop(b));
-}
-
-void    rs(t_stack *s)
-{   
-    int idx;
-    
-    if(s->top == -1)
-        return ;   
+    n = (t_list *)malloc(sizeof(t_list));
+    n->next = 0;
+    n->idx = idx;
+    idx++;
+    return (n);
 }

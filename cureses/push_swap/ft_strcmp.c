@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_function.c                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 13:02:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/04/11 15:30:24 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:55:44 by minhjang          #+#    #+#             */
+/*   Updated: 2022/04/11 13:12:44 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void    ss(t_stack *a, t_stack *b)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-    swap(a);
-    swap(b);
-}
+	unsigned int	idx;
 
-void    pa(t_stack *a, t_stack *b)
-{
-    if(b->top != -1)
-        push(a, pop(b));
-}
-
-void    pb(t_stack *b, t_stack *a)
-{
-    if(b->top != -1)
-        push(a, pop(b));
-}
-
-void    rs(t_stack *s)
-{   
-    int idx;
-    
-    if(s->top == -1)
-        return ;   
+	idx = 0;
+	while (s1[idx] && s2[idx])
+		idx++;
+	return ((const unsigned char)s1[idx] - (const unsigned char)s2[idx]);
 }
