@@ -18,7 +18,7 @@
 
 int		ft_printf(const char *str, ...);
 int		write_token(char **token, const char *str,
-			 va_list ap, int *token_num);
+			va_list ap, int *token_num);
 int		regstr_to_token(char **token, const char *str, int *idx);
 void	print_token(char **token, int *token_num);
 int		free_all(char **token, int err_idx);

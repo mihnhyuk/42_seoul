@@ -15,7 +15,7 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 	unsigned int	idx;
 
 	idx = 0;
-	if (size == 0 )
+	if (size == 0)
 	{
 		while (src[idx])
 			idx++;
