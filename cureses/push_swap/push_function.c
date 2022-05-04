@@ -32,7 +32,7 @@ void    pb(t_stack *b, t_stack *a)
 
 void    rs(t_stack *s)
 {   
-    int idx;
+    int 
     
     if(s->top == -1)
         return ;   
