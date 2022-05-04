@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:36:17 by minhjang          #+#    #+#             */
-/*   Updated: 2022/04/11 14:52:15 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:09:32 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ int		peek(t_stack *s);
 void	init_stack(t_stack *s);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_atoi(const char *str);
-t_list  *new_node();
+t_list	*new_node(void);
 
 #endif

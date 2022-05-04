@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:28:47 by minhjang          #+#    #+#             */
-/*   Updated: 2022/04/11 15:14:58 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:09:57 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static void		init(int argc, char **argv, t_stack *a);
 static void		inst(t_list *ins, t_stack *a, t_stack *b);
-static t_list	*input();
+static t_list	*input(void);
 
 int	main(int argc, char **argv)
 {
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	init_stack(&a);
 	init_stack(&b);
 	init(argc, argv, &a);
-	inst(input(), a, b);	
+	inst(input(), a, b);
 }
 
 static void	init(int argc, char **argv, t_stack *a)
@@ -47,12 +47,11 @@ static void	inst(t_list *ins, t_stack *a, t_stack *b)
 	while (ins->inst != 0)
 	{
 		if (ft_strcmp(ins->inst, "sa"))
-        	swap(a);
-		else if(ft_strcmp(ins->inst, "sb"))
+			swap(a);
+		else if (ft_strcmp(ins->inst, "sb"))
 			swap(b);
-		else if(ft_strcmp(ins->inst, "sa"))
+		else if (ft_strcmp(ins->inst, "sa"))
 	}
-	
 }
 
 static t_list	*input()
