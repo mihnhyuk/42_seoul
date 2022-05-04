@@ -19,7 +19,7 @@ char	*str_to_token(va_list ap);
 char	*pointer_to_token(va_list ap);
 
 int	v_to_tk(char **token, const char format_char,
-			 va_list ap, int *token_num)
+			va_list ap, int *token_num)
 {
 	if (format_char == 'c')
 	{
@@ -77,9 +77,9 @@ char	*pointer_to_token(va_list ap)
 {
 	unsigned long long int	p_to_i;
 	unsigned long long int	tmp;
-	            const char	*hex_list = "0123456789abcdef";
-	                  char	hex[19];
-	                   int	idx;
+	const char				*hex_list = "0123456789abcdef";
+	char					hex[19];
+	int						idx;
 
 	idx = 2;
 	p_to_i = (unsigned long long int)va_arg(ap, void *);

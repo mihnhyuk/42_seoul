@@ -14,7 +14,7 @@
 
 char	*ft_strdup(char *src)
 {
-	 int	str_iter;
+	int		str_iter;
 	char	*new_str;
 
 	str_iter = 0;
