@@ -1,50 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_function2.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:29:21 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 18:48:59 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/22 16:52:53 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 19:10:15 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <unistd.h>
 
-static void	ros(t_stack *s);
-
-
-
-void	ra(t_stack  *s)
+static void	write_recur(int n, int fd)
 {
-	ros(s);
-}
+	char	a;
 
-void	rb(t_stack  *s)
-{
-	ros(s);
-}
-
-void	rr(t_stack *a, t_stack *b)
-{
-	ros(a);
-	ros(b);
-}
-
-static void	ros(t_stack *s)
-{
-	int	tmp;
-	int	idx;
-
-	if (s->top <= 0)
-		return ;
-	idx = s->top;
-	tmp = peek(s);
-	while (idx > 0)
+	a = (n % 10) + '0';
+	if (n / 10 == 0)
 	{
-		s->ary[idx] = s->ary[idx - 1];
-		idx--;
+		write(fd, &a, 1);
+		return ;
 	}
-	s->ary[0] = tmp;
+	else
+	{
+		write_recur(n / 10, fd);
+		write(fd, &a, 1);
+	}
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	unsigned int	u_n;
+
+	u_n = n;
+	if (n < 0)
+	{
+		write (fd, "-", 1);
+		u_n = -n;
+	}
+	write_recur(u_n, fd);
 }

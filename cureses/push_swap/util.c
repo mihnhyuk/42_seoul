@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 #include <stdlib.h>
 
 t_list	*new_node(void)
@@ -23,4 +24,29 @@ t_list	*new_node(void)
 	n->idx = idx;
 	idx++;
 	return (n);
+}
+
+void	print_stack(t_stack *a, t_stack *b)
+{
+	int	height;
+	int	atop;
+	int btop;
+
+	height = a->top > b->top ? a->top : b->top;
+	atop = a->top;
+	btop = b->top;
+	while (height >= 0)
+	{
+		if (atop == height)
+			ft_putnbr_fd(a->ary[atop--], 1);
+		else
+			write(1, ".", 1);
+		write (1, "  ", 2);
+		if (btop == height)
+			ft_putnbr_fd(b->ary[btop--], 1);
+		else
+			write(1, ".", 1);
+		write(1, "\n", 1);
+		height--;		
+	}
 }

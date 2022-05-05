@@ -33,6 +33,9 @@ void	push(t_stack *s, int data)
 	if (s->top + 1 >= s->capacity)
 	{
 		tmp = (int *)malloc(s->capacity * 2 * sizeof(int));
+		if (tmp == NULL)
+			return ;
+		s->capacity *= 2;
 		while (idx <= s->top)
 		{
 			tmp[idx] = s->ary[idx];

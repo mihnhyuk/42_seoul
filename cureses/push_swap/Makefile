@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/04/11 15:04:40 by minhjang         ###   ########.fr        #
+#    Updated: 2022/05/05 20:09:30 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,15 @@ NAME = push_swap
 SRCS = 	push_swap.c \
 		ft_atoi.c \
 		ft_strcmp.c \
+		ft_putnbr_fd.c \
 		stack.c	\
+		push_function.c \
+		push_function2.c \
+		push_function3.c \
 		get_next_line.c \
 		get_next_line_utils.c \
-		get_next_line.h \
-		util.c
+		util.c \
+		sort.c
 
 .SUFFIXES : .c .o
 
@@ -41,9 +45,12 @@ all: $(NAME)
 clean:
 	rm -f $(OBJECT)
 
-fclean: clean
+fclean:
+	$(MAKE) clean
 	rm -f $(NAME)
-re: fclean all
+re: 
+	$(MAKE)fclean
+	$(MAKE) all
 
 test:
 	$(CC) $(SRCS)

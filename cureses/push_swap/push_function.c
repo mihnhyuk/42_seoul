@@ -30,36 +30,12 @@ void	pb(t_stack *b, t_stack *a)
 		push(a, pop(b));
 }
 
-void	rs(t_stack *s)
+void	sa(t_stack *a)
 {
-	int	tmp;
-	int	idx;
-
-	if (s->top <= 0)
-		return ;
-	idx = s->top -1;
-	tmp = s->ary[0];
-	while (idx >= 0)
-	{
-		s->ary[idx] = s->ary[idx + 1];
-		idx--;
-	}
-	s->ary[s->top] = tmp;
+	swap(a);
 }
 
-void	rrs(t_stack *s)
+void	sb(t_stack *b)
 {
-	int	tmp;
-	int	idx;
-
-	if (s->top <= 0)
-		return ;
-	idx = s->top -1;
-	tmp = peek(s);
-	while (idx < s->top)
-	{
-		s->ary[idx - 1] = s->ary[idx];
-		idx++;
-	}
-	s->ary[0] = tmp;
+	swap(b);
 }

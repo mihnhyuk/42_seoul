@@ -1,50 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_function2.c                                   :+:      :+:    :+:   */
+/*   push_function3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:29:21 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 18:48:59 by minhjang         ###   ########.fr       */
+/*   Created: 2022/05/05 18:43:39 by minhjang          #+#    #+#             */
+/*   Updated: 2022/05/05 18:50:33 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ros(t_stack *s);
+static void	rros(t_stack *s);
 
-
-
-void	ra(t_stack  *s)
+void    rra(t_stack *s)
 {
-	ros(s);
+    rros(s);
 }
 
-void	rb(t_stack  *s)
+void    rrb(t_stack *s)
 {
-	ros(s);
+    rros(s);
 }
 
-void	rr(t_stack *a, t_stack *b)
+void    rrr(t_stack *a, t_stack *b)
 {
-	ros(a);
-	ros(b);
+    rros(a);
+    rros(b);
 }
-
-static void	ros(t_stack *s)
+static void	rros(t_stack *s)
 {
 	int	tmp;
 	int	idx;
 
 	if (s->top <= 0)
-		return ;
-	idx = s->top;
-	tmp = peek(s);
-	while (idx > 0)
+	return ;
+	idx = 0;
+	tmp = s->ary[0];
+	while (idx < s->top)
 	{
-		s->ary[idx] = s->ary[idx - 1];
-		idx--;
-	}
-	s->ary[0] = tmp;
+		s->ary[idx] = s->ary[idx + 1];
+		idx++;
+		}
+	s->ary[s->top] = tmp;
 }

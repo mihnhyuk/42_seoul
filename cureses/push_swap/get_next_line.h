@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:27:26 by minhjang          #+#    #+#             */
-/*   Updated: 2022/04/11 15:02:16 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/01/19 21:14:24 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # define OPEN_MAX 1024
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-#  endif
-
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 64
+#endif
 typedef struct s_readword
 {
 	struct s_readword		*next;
