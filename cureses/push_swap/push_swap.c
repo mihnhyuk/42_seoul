@@ -6,13 +6,12 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:28:47 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 23:28:17 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/06 02:29:27 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "push_swap.h"
-#include <stdio.h>
 #include <unistd.h>
 
 static int		init(int argc, char **argv, t_stack *a);
@@ -33,6 +32,7 @@ int	main(int argc, char **argv)
 		return (0);
 	sort(&a, &b, &result);
 	print_result(&result, result_map);
+	//print_stack(&a, &b);
 	free_all(&a, &b, &result);
 	return (0);
 }
