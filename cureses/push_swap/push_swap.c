@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:28:47 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 20:20:24 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:03:42 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,70 +15,63 @@
 #include <stdio.h>
 #include <unistd.h>
 
-static void		init(int argc, char **argv, t_stack *a);
-static t_list	*input(void);
+static int		init(int argc, char **argv, t_stack *a);
+static void		init_values(t_stack *a, t_stack *b,
+					t_result *result, char *result_map[]);
+static void	print_result(t_result *result, char *result_map[]);
 
 int	main(int argc, char **argv)
 {
-	t_stack	a;
-	t_stack	b;
+	t_stack		a;
+	t_stack		b;
+	t_result	result;
+	char		*result_map[12];
 
-
-	init_stack(&a);
-	init_stack(&b);
-	init(argc, argv, &a);
-	print_stack(&a, &b);
-	printf("\n\n");
-	sort(&a, &b);
-	print_stack(&a, &b);
-	
+	init_values(&a, &b, &result, result_map);
+	if (init(argc, argv, &a))
+		return (0);
+	sort(&a, &b, &result);
+	print_result(&result, result_map);
+	return (0);
 }
 
-static void	init(int argc, char **argv, t_stack *a)
+static int	init(int argc, char **argv, t_stack *a)
 {
 	int	idx;
+	int	tmp;
 
 	idx = argc - 1;
 	while (idx >= 1)
 	{
-		push(a, ft_atoi(argv[idx]));
+		tmp = ft_atoi(argv[idx]);
+		if (tmp == 0 && argv[idx][0] != '0')
+		{
+			write(1, "Error", 5);
+			return (1);
+		}		
+		push(a, tmp);
 		idx--;
 	}
+	return (0);
 }
 
-/*
-static void	inst(t_list *ins, t_stack *a, t_stack *b)
+static void	init_values(t_stack *a, t_stack *b,
+			t_result *result, char *result_map[])
 {
-	while (ins->inst != 0)
-	{
-		if (ft_strcmp(ins->inst, "sa"))
-			swap(a);
-		else if (ft_strcmp(ins->inst, "sb"))
-			swap(b);
-		else if (ft_strcmp(ins->inst, "ss"))
-			ss(a, b);
-		else if (ft_strcmp(ins->inst, "pa"))
-			
-	}
+	init_stack(a);
+	init_stack(b);
+	init_result(result, result_map);
 }
-*/
-static t_list	*input()
-{
-	t_list	*ins;
-	t_list	*first;
 
-	ins = new_node();
-	first = ins;
-	while (1)
+static void	print_result(t_result *result, char *result_map[])
+{
+	int	idx;
+
+	idx = 0;
+	while (idx < result->top + 1)
 	{
-		ins->inst = get_next_line(1);
-		if(ins->inst != 0)
-		{
-			ins->next = new_node();
-			ins = ins->next;
-		}
-		else
-			break ;
+		ft_putstr_fd(result_map[result->used_inst[idx]], 1);
+		idx++;
+		write(1, "\n", 1);
 	}
-	return (first);
 }

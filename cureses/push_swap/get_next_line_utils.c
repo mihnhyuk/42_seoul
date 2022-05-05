@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:27:23 by minhjang          #+#    #+#             */
-/*   Updated: 2022/01/19 21:12:00 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/05 22:40:14 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	write_lst(int fd, t_readword **iter, char token[BUFFER_SIZE], int idx)
 	(*iter) = (*iter)->next;
 	if ((*iter) == NULL)
 		free_lst((*iter)->start);
-	 return (clear(token, idx));
+	return (clear(token, idx));
 }
 
 char	*lst_to_str(t_readword *lst)

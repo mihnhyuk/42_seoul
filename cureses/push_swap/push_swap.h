@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:36:17 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 20:13:09 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:00:43 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct s_list
 	char			*inst;
 }	t_list;
 
+typedef struct s_result
+{
+	int	top;
+	int	capacity;
+	int	*used_inst;
+}	t_result;
+
 void	swap(t_stack *s);
 void	push(t_stack *s, int data);
 int		pop(t_stack *s);
@@ -35,17 +42,21 @@ void	init_stack(t_stack *s);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_atoi(const char *str);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
 t_list	*new_node(void);
 void	print_stack(t_stack *a, t_stack *b);
-void	ss(t_stack *a, t_stack *b);
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *b, t_stack *a);
-void	ra(t_stack *s);
-void	rb(t_stack *s);
-void	rr(t_stack *a, t_stack *b);
-void	rra(t_stack *s);
-void	rrb(t_stack *s);
-void	rrr(t_stack *a, t_stack *b);
-void    sort(t_stack *a, t_stack *b);
-
+void	sa(t_stack *a, t_result *result);
+void	sb(t_stack *b, t_result *result);
+void	ss(t_stack *a, t_stack *b, t_result *result);
+void	pa(t_stack *a, t_stack *b, t_result *result);
+void	pb(t_stack *b, t_stack *a, t_result *result);
+void	ra(t_stack *s, t_result *result);
+void	rb(t_stack *s, t_result *result);
+void	rr(t_stack *a, t_stack *b, t_result *result);
+void	rra(t_stack *s, t_result *result);
+void	rrb(t_stack *s, t_result *result);
+void	rrr(t_stack *a, t_stack *b, t_result *result);
+void	sort(t_stack *a, t_stack *b, t_result *result);
+void	init_result(t_result *result, char *result_map[]);
+void	push_result(t_result *result, int data);
 #endif
