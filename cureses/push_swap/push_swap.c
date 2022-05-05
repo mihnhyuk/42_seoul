@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:28:47 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 23:03:42 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:28:17 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int		init(int argc, char **argv, t_stack *a);
 static void		init_values(t_stack *a, t_stack *b,
 					t_result *result, char *result_map[]);
 static void	print_result(t_result *result, char *result_map[]);
+static void	free_all(t_stack *a, t_stack *b, t_result *r);
 
 int	main(int argc, char **argv)
 {
@@ -32,6 +33,7 @@ int	main(int argc, char **argv)
 		return (0);
 	sort(&a, &b, &result);
 	print_result(&result, result_map);
+	free_all(&a, &b, &result);
 	return (0);
 }
 
@@ -40,6 +42,8 @@ static int	init(int argc, char **argv, t_stack *a)
 	int	idx;
 	int	tmp;
 
+	if (a->ary == NULL)
+		return (1);
 	idx = argc - 1;
 	while (idx >= 1)
 	{
@@ -74,4 +78,11 @@ static void	print_result(t_result *result, char *result_map[])
 		idx++;
 		write(1, "\n", 1);
 	}
+}
+
+static void	free_all(t_stack *a, t_stack *b, t_result *r)
+{
+	free(a->ary);
+	free(b->ary);
+	free(r->used_inst);
 }

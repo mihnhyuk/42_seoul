@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 19:51:00 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 22:35:27 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:29:15 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	sort_iter(t_stack *a, t_stack *b, t_result *result);
 
 void	sort(t_stack *a, t_stack *b, t_result *result)
 {
+	if (b->ary == NULL)
+		return ;
 	pivot_comp(a, b, result);
 	sort_iter(a, b, result);
 }
