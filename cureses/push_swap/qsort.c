@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 15:03:51 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/03 21:01:30 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:31:09 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	*ft_qsort(int pivot, int *ary, int len)
 	left = (int *)malloc((len) * sizeof(int));
 	right = (int *)malloc((len) * sizeof(int));
 	if (left == NULL || right == NULL)
-		return NULL;
+		return (NULL);
 	idx[2] = -1;
 	idx[0] = 0;
 	idx[1] = 0;
@@ -59,7 +59,7 @@ static int	*ft_qsort(int pivot, int *ary, int len)
 	}
 	free(ary);
 	left = ft_qsort(left[0], left, (idx[0]));
-	right = ft_qsort(right[0], right, (idx[1])); 
+	right = ft_qsort(right[0], right, (idx[1]));
 	return (merge(left, right, pivot, idx));
 }
 
@@ -70,7 +70,6 @@ static int	*merge(int *left, int *right, int pivot, int *len)
 
 	result = (int *)malloc((len[0] + len[1] + 1) * sizeof(int));
 	idx = 0;
-	
 	while (idx < len[0])
 	{
 		result[idx] = left[idx];

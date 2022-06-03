@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/06/03 20:29:53 by minhjang         ###   ########.fr        #
+#    Updated: 2022/06/03 21:50:34 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS = 	push_swap.c \
 		util.c \
 		sort.c \
 		qsort.c \
+		sort_utils.c
 		
 .SUFFIXES : .c .o
 
@@ -47,7 +48,7 @@ all: $(NAME)
 clean:
 	rm -f $(OBJECT)
 
-fclean:
+fclean: clean
 	$(MAKE) clean
 	rm -f $(NAME)
 re: fclean all
