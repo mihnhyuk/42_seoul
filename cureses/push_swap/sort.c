@@ -5,83 +5,103 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 19:51:00 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/06 02:28:40 by minhjang         ###   ########.fr       */
+/*   Created: 2022/06/03 14:54:59 by minhjang          #+#    #+#             */
+/*   Updated: 2022/06/03 21:05:10 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-static int	pivot_comp(t_stack *a, t_stack *b, t_result *result);
-static int	merge_sort(t_stack *a, t_stack *b, t_result *result);
+static void A_to_B(t_stack *a, t_stack *b, t_result *r, int range);
+static void B_to_A(t_stack *a, t_stack *b, t_result *r, int range);
+static int A_to_B_cond(t_stack *a, t_stack *b, t_result *r, int pivot);
+static int B_to_A_cond(t_stack *a, t_stack *b, t_result *r, int pivot);
 
-void	sort(t_stack *a, t_stack *b, t_result *result)
+void	sort(t_stack *a, t_stack *b, t_result *r)
 {
-	if (b->ary == NULL)
+	A_to_B(a, b, r, a->top + 1);
+}
+
+static void A_to_B(t_stack *a, t_stack *b, t_result *r, int range)
+{
+	int	pivot;
+	int idx;
+	int	r_p_num[2];
+
+	if (range <= 1)
 		return ;
-	pivot_comp(a, b, result);
-	while (b->top != -1)
+	idx = -1;
+	r_p_num[0] = 0;
+	r_p_num[1] = 0;
+	pivot = find_pivot(a, range);
+	while (++idx < range)
 	{
-		merge_sort(a, b, result);
+		if (A_to_B_cond(a, b, r, pivot))
+			(r_p_num[0])++;
+		else
+			(r_p_num[1])++;
+	}
+	idx = -1;
+	while (++idx < r_p_num[0])
+		rra(a, r);
+	A_to_B(a, b, r, r_p_num[0]);
+	B_to_A(a, b, r, r_p_num[1]);
+}
+
+static void B_to_A(t_stack *a, t_stack *b, t_result *r, int range)
+{
+	int	pivot;
+	int idx;
+	int	r_p_num[2];
+	
+	if (range == 1)
+	{
+		pa(a, b, r);
+		return ;
+	}
+	idx = -1;
+	r_p_num[0] = 0;
+	r_p_num[1] = 0;
+	pivot = find_pivot(b, range);
+	while (++idx < range)
+	{
+		if (B_to_A_cond(a, b, r, pivot))
+			(r_p_num[0])++;
+		else
+			(r_p_num[1])++;
+	}
+	idx = -1;
+	while (++idx < r_p_num[0])
+		rrb(b, r);
+	A_to_B(a, b, r, r_p_num[1]);
+	B_to_A(a, b, r, r_p_num[0]);
+}
+
+static int A_to_B_cond(t_stack *a, t_stack *b, t_result *r, int pivot)
+{
+	if (peek(a) >= pivot)
+	{
+		ra(a, r);
+		return (1);
+	}
+	else
+	{
+		pb(a, b, r);
+		return(0);
 	}
 }
 
-static int	pivot_comp(t_stack *a, t_stack *b, t_result *result)
+static int B_to_A_cond(t_stack *a, t_stack *b, t_result *r, int pivot)
 {
-	int	a_length;
-	int	max;
-	int	counter;
-
-	counter = 0;
-	a_length = a->top + 1;
-	max = peek(a);
-	while (a_length > 0)
+	if (peek(b) < pivot)
 	{
-		if (max <= peek(a))
-			max = peek(a);
-		else
-		{
-			pb(a, b, result);
-			a_length--;
-			counter++;
-			continue ;
-		}
-			ra(a, result);
-		a_length--;
+		rb(b, r);
+		return (1);
 	}
-	return (counter);
-}
-
-static int	merge_sort(t_stack *a, t_stack *b, t_result *result)
-{
-	int	b_length;
-	int a_length;
-	int	min;
-
-	b_length = b->top + 1;
-	a_length = a->top + 1;
-	min = peek(b);
-	while (b_length > 0)
+	else
 	{
-		if (min >= peek(b))
-		{
-			min = peek(b);
-			while (a_length > 0 && a->ary[0] > min)
-			{
-				rra(a, result);
-				a_length--;
-			}
-			pa(a, b, result);
-			b_length--;
-		}
-		else
-		{
-			rb(b, result);
-			b_length--;
-		}
+		pa(a, b, r);
+		return(0);
 	}
-	while (a_length-- > 0)
-		rra(a, result);
-	return (0);
 }

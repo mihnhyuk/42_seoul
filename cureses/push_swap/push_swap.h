@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:36:17 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 23:00:43 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/03 18:18:49 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ void	rr(t_stack *a, t_stack *b, t_result *result);
 void	rra(t_stack *s, t_result *result);
 void	rrb(t_stack *s, t_result *result);
 void	rrr(t_stack *a, t_stack *b, t_result *result);
-void	sort(t_stack *a, t_stack *b, t_result *result);
 void	init_result(t_result *result, char *result_map[]);
 void	push_result(t_result *result, int data);
+void	sort(t_stack *a, t_stack *b, t_result *r);
+int		find_pivot(t_stack *a, int range);
+
 #endif

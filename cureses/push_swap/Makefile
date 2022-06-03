@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/05/05 23:01:02 by minhjang         ###   ########.fr        #
+#    Updated: 2022/06/03 20:29:53 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,9 @@ SRCS = 	push_swap.c \
 		get_next_line.c \
 		get_next_line_utils.c \
 		util.c \
-		sort.c
-
+		sort.c \
+		qsort.c \
+		
 .SUFFIXES : .c .o
 
 .PHONY: all clean fclean re
@@ -54,4 +55,4 @@ re: fclean all
 	$(MAKE) all
 
 test:
-	$(CC) $(SRCS)
+	$(CC) -g $(SRCS) -o $(NAME)

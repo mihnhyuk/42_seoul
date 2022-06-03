@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:28:47 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/08 15:18:47 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:02:58 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ int	main(int argc, char **argv)
 	init_values(&a, &b, &result, result_map);
 	if (init(argc, argv, &a))
 		return (0);
-	print_stack(&a, &b);
+	//print_stack(&a, &b);
+	//printf("\n");
 	sort(&a, &b, &result);
 	print_result(&result, result_map);
-	printf("inst num : %d\n", result.top + 1);
-	print_stack(&a, &b);
+	//printf("inst nun: %d\n", result.top + 1);
+	//print_stack(&a, &b);
 	free_all(&a, &b, &result);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:48:03 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 23:25:24 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/02 13:09:40 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int	peek(t_stack *s)
 void	init_stack(t_stack *s)
 {
 	s->top = -1;
-	s->capacity = 2;
-	s->ary = (int *)malloc(2 * sizeof(int));
+	s->capacity = 500;
+	s->ary = (int *)malloc(s->capacity * sizeof(int));
 }

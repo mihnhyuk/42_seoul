@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:43:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/05/05 22:39:15 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/05/08 18:40:46 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@ static void	rros(t_stack *s);
 
 void	rra(t_stack *s, t_result *result)
 {
+	if (s->top < 1)
+		return ;
 	rros(s);
 	push_result(result, 9);
 }
 
 void	rrb(t_stack *s, t_result *result)
 {
+	if (s->top < 1)
+		return ;
 	rros(s);
 	push_result(result, 10);
 }
