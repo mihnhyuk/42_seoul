@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:54:59 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/03 21:50:57 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/04 14:54:59 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ static int	b_to_a_cond(t_stack *a, t_stack *b, t_result *r, int pivot);
 
 void	sort(t_stack *a, t_stack *b, t_result *r)
 {
+	if (is_aligned(a, a->top + 1))
+		return ;
+	else if (a->top == 1)
+	{
+		sa(a,r);
+		return ;
+	}
 	a_to_b(a, b, r, a->top + 1);
 }
 
@@ -26,8 +33,9 @@ static void	a_to_b(t_stack *a, t_stack *b, t_result *r, int range)
 {
 	int	pivot;
 	int	idx;
-	int	r_p_num[2];
+	int	r_p_num[3];
 
+	r_p_num[2] = a->top + 1;
 	if (range <= 1 || is_aligned(a, range))
 		return ;
 	idx = -1;
@@ -42,7 +50,7 @@ static void	a_to_b(t_stack *a, t_stack *b, t_result *r, int range)
 			(r_p_num[1])++;
 	}
 	idx = -1;
-	while (++idx < r_p_num[0])
+	while (++idx < r_p_num[0] && range != r_p_num[2])
 		rra(a, r);
 	a_to_b(a, b, r, r_p_num[0]);
 	b_to_a(a, b, r, r_p_num[1]);
@@ -52,8 +60,9 @@ static void	b_to_a(t_stack *a, t_stack *b, t_result *r, int range)
 {
 	int	pivot;
 	int	idx;
-	int	r_p_num[2];
+	int	r_p_num[3];
 
+	r_p_num[2] = b->top + 1;
 	if (range == 1)
 	{
 		pa(a, b, r);
@@ -71,7 +80,7 @@ static void	b_to_a(t_stack *a, t_stack *b, t_result *r, int range)
 			(r_p_num[1])++;
 	}
 	idx = -1;
-	while (++idx < r_p_num[0])
+	while (++idx < r_p_num[0] && range != r_p_num[2])
 		rrb(b, r);
 	a_to_b(a, b, r, r_p_num[1]);
 	b_to_a(a, b, r, r_p_num[0]);

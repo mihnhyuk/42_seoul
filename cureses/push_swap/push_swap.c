@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:28:47 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/03 21:27:13 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:08:27 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 		return (0);
 	sort(&a, &b, &result);
 	print_result(&result, result_map);
+	//print_stack(&a, &b);
 	free_all(&a, &b, &result);
 	return (0);
 }
