@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:36:17 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/03 21:24:07 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:29:32 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,13 @@ void	push_result(t_result *result, int data);
 void	sort(t_stack *a, t_stack *b, t_result *r);
 int		find_pivot(t_stack *a, int range);
 int		is_aligned(t_stack *s, int range);
+int		input_check(int argc, char **argv);
+int		many_args(char **argv, int idx, t_stack *a);
+void 	one_arg(char *s, t_stack *a);
+int		dup_check(t_stack *a);
+void	three(t_stack *a, t_result * r);
+void	btoa_opt(t_stack *a, t_stack *b, t_result *r, int range);
+int		is_reversed(t_stack *b, int range);
+int		atob_opt(t_stack *a, t_result *r, int range);
 
 #endif

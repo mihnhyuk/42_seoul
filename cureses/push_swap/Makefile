@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/06/03 21:50:34 by minhjang         ###   ########.fr        #
+#    Updated: 2022/06/04 18:30:51 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ SRCS = 	push_swap.c \
 		util.c \
 		sort.c \
 		qsort.c \
-		sort_utils.c
+		sort_utils.c \
+		input_check.c \
+		input_parser.c
 		
 .SUFFIXES : .c .o
 
@@ -56,4 +58,4 @@ re: fclean all
 	$(MAKE) all
 
 test:
-	$(CC) -g $(SRCS) -o $(NAME)
+	$(CC) -fsanitize=address -g $(SRCS) -o $(NAME)

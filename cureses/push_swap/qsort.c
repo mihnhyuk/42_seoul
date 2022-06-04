@@ -6,13 +6,12 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 15:03:51 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/03 21:31:09 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/04 18:16:18 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static int	*ft_qsort(int pivot, int *ary, int len);
 static int	*merge(int *left, int *right, int pivot, int *len);
@@ -23,7 +22,7 @@ int	find_pivot(t_stack *a, int range)
 	int	idx;
 	int	pivot;
 
-	sorted_ary = (int *)malloc((a->top + 1) * sizeof(int));
+	sorted_ary = (int *)malloc((range) * sizeof(int));
 	idx = 0;
 	while (idx < range)
 	{

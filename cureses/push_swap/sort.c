@@ -6,11 +6,12 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:54:59 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/04 14:54:59 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:36:02 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static void	a_to_b(t_stack *a, t_stack *b, t_result *r, int range);
 static void	b_to_a(t_stack *a, t_stack *b, t_result *r, int range);
@@ -26,6 +27,11 @@ void	sort(t_stack *a, t_stack *b, t_result *r)
 		sa(a,r);
 		return ;
 	}
+	else if (a-> top == 2)
+	{
+		three(a, r);
+		return ;
+	}
 	a_to_b(a, b, r, a->top + 1);
 }
 
@@ -36,7 +42,9 @@ static void	a_to_b(t_stack *a, t_stack *b, t_result *r, int range)
 	int	r_p_num[3];
 
 	r_p_num[2] = a->top + 1;
-	if (range <= 1 || is_aligned(a, range))
+	if (is_aligned(a, range))
+		return ;
+	if (atob_opt(a, r, range))
 		return ;
 	idx = -1;
 	r_p_num[0] = 0;
@@ -63,11 +71,8 @@ static void	b_to_a(t_stack *a, t_stack *b, t_result *r, int range)
 	int	r_p_num[3];
 
 	r_p_num[2] = b->top + 1;
-	if (range == 1)
-	{
-		pa(a, b, r);
-		return ;
-	}
+	if (range == 1 || is_reversed(b, range))
+		return btoa_opt(a, b, r, range);
 	idx = -1;
 	r_p_num[0] = 0;
 	r_p_num[1] = 0;
