@@ -6,12 +6,13 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 17:51:08 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/05 16:33:26 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/05 17:20:25 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
+#include <stdio.h>
 
 static int	check_blank(const char c);
 static int	to_int(t_stack *a, char *st);
@@ -67,17 +68,18 @@ static int	to_int(t_stack *a, char *st)
 		return (1);
 	else if (ft_strlen(st) == 11 && *st == '+')
 	{
-		if (st[1] > 2 || ft_atoi(st) < 0)
+		if (st[1] > '2' || ft_atoi(st) < 0)
 			return (1);
+		
 	}
 	else if (ft_strlen(st) == 11 && *st == '-')
 	{
-		if (st[1] > 2 || ft_atoi(st) > 0)
+		if (st[1] > '2' || ft_atoi(st) > 0)
 			return (1);
 	}
 	else if(ft_strlen(st) == 10 && *st != '+' && *st != '-')
 	{
-		if (st[1] > 2 || ft_atoi(st) < 0)
+		if (st[0] > '2' || ft_atoi(st) < 0)
 			return (1);
 	}
 	push(a, ft_atoi(st));
