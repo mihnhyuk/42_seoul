@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:10:49 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/04 20:50:22 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:53:24 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_aligned(t_stack *s, int range)
 	return (1);
 }
 
-void	three(t_stack *a, t_result * r)
+void	three(t_stack *a, t_result *r)
 {
 	if (a->ary[0] > a->ary[1] && a->ary[0] > a->ary[2])
 		sa(a, r);
@@ -55,6 +55,7 @@ void	three(t_stack *a, t_result * r)
 			sa(a, r);
 	}
 }
+
 int	is_reversed(t_stack *b, int range)
 {
 	int	idx;
@@ -71,6 +72,7 @@ int	is_reversed(t_stack *b, int range)
 	}
 	return (1);
 }
+
 void	btoa_opt(t_stack *a, t_stack *b, t_result *r, int range)
 {
 	int	idx;
@@ -89,7 +91,7 @@ void	btoa_opt(t_stack *a, t_stack *b, t_result *r, int range)
 	}
 }
 
-int		atob_opt(t_stack *a, t_result *r, int range)
+int	atob_opt(t_stack *a, t_result *r, int range)
 {
 	if (range == 2)
 	{
@@ -104,7 +106,8 @@ int		atob_opt(t_stack *a, t_result *r, int range)
 	}
 	else if (range == 3)
 	{
-		if (a->ary[a->top - 2] > peek(a) && a->ary[a->top - 2] > a->ary[a->top - 1])
+		if (a->ary[a->top - 2] > peek(a)
+			&& a->ary[a->top - 2] > a->ary[a->top - 1])
 		{
 			sa(a, r);
 			return (1);

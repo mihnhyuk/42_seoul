@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/06/04 18:30:51 by minhjang         ###   ########.fr        #
+#    Updated: 2022/06/05 16:34:37 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = 	push_swap.c \
 		ft_strcmp.c \
 		ft_putnbr_fd.c \
 		ft_putstr_fd.c \
+		ft_strlen.c \
 		stack.c	\
 		push_function.c \
 		push_function2.c \
@@ -49,6 +50,7 @@ all: $(NAME)
 
 clean:
 	rm -f $(OBJECT)
+	rm -r *.dSYM
 
 fclean: clean
 	$(MAKE) clean

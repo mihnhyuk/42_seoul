@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:41:23 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/04 20:04:01 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/04 21:30:29 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	check_blank(const char c);
 static int	check_sign(const char c);
 static void	init_var(int *flag);
-static int cond(const char c, int *flag);
+static int	cond(const char c, int *flag);
 
 int	input_check(int argc, char **argv)
 {
@@ -38,19 +38,16 @@ int	input_check(int argc, char **argv)
 		if (!flag[2])
 			return (0);
 	}
-	if (flag[4])
-		return (1);
-	return (2);
+	return (1);
 }
-static int cond(const char c, int *f)
+
+static int	cond(const char c, int *f)
 {
 	if (c >= '0' && c <= '9' )
 	{
 		f[1] = 1;
 		f[2] = 1;
 		f[0] = 0;
-		if (f[3])
-			f[4] = 1;
 	}
 	else if (check_blank(c) && f[1])
 	{
@@ -59,8 +56,6 @@ static int cond(const char c, int *f)
 			f[0] = 1;
 			f[1] = 1;
 		}
-		if (f[2])
-			f[3] = 1;
 	}
 	else if (check_sign(c) && f[0] && f[1])
 	{
@@ -96,4 +91,3 @@ static int	check_sign(const char c)
 	else
 		return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:28:47 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/04 20:32:38 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/05 16:32:55 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "push_swap.h"
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 static int	init(int argc, char **argv, t_stack *a);
 static void	init_values(t_stack *a, t_stack *b,
@@ -27,7 +28,7 @@ int	main(int argc, char **argv)
 	t_stack		b;
 	t_result	result;
 	char		*result_map[12];
-	
+
 	init_values(&a, &b, &result, result_map);
 	if (init(argc, argv, &a))
 		return (0);
@@ -35,7 +36,6 @@ int	main(int argc, char **argv)
 		return (0);
 	sort(&a, &b, &result);
 	print_result(&result, result_map);
-	//printf("inst: %d", result.top + 1);
 	free_all(&a, &b, &result);
 	return (0);
 }
@@ -50,11 +50,9 @@ static int	init(int argc, char **argv, t_stack *a)
 	idx = argc - 1;
 	tmp = input_check(argc, argv);
 	if (tmp == 1)
-		one_arg(argv[1], a);
-	else if (tmp == 2)
 	{
 		if (many_args(argv, idx, a))
-			return (0);
+			return (1);
 	}
 	else
 	{
