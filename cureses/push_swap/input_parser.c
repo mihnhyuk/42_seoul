@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 17:51:08 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/05 17:20:25 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/18 11:38:54 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	one_arg(char *s, t_stack *a, int flag)
 	int		idx;
 	int		s_idx;
 
-	idx = 19;
+	idx = 13;
 	flag = 0;
 	s_idx = ft_strlen(s);
 	st[idx--] = '\0';
-	while (--s_idx >= 0)
+	while (--s_idx >= 0 && idx >= 0)
 	{
 		if (!check_blank(s[s_idx]))
 		{
@@ -54,7 +54,7 @@ int	one_arg(char *s, t_stack *a, int flag)
 			if (to_int(a, st + idx + 1))
 				return (1);
 			push(a, ft_atoi(st + idx + 1));
-			idx = 18;
+			idx = 12;
 		}
 	}
 	if (flag && to_int(a, st + idx + 1))
