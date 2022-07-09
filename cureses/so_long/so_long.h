@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:53:26 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/29 01:40:23 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/09 16:04:43 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 #include "str_ary.h"
+#include "./mlx/mlx.h"
 
 char		*ft_strdup(char *src);
 t_strary	*read_map(const char *map_name);

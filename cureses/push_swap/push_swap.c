@@ -6,14 +6,13 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 19:28:47 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/05 17:16:23 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/06/21 19:42:29 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "push_swap.h"
 #include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 static int	init(int argc, char **argv, t_stack *a);
@@ -37,6 +36,7 @@ int	main(int argc, char **argv)
 	sort(&a, &b, &result);
 	print_result(&result, result_map);
 	free_all(&a, &b, &result);
+	system("leaks push_swap");
 	return (0);
 }
 
@@ -45,7 +45,7 @@ static int	init(int argc, char **argv, t_stack *a)
 	int	idx;
 	int	tmp;
 
-	if (a->ary == NULL)
+	if (a->ary == NULL || argc == 1)
 		return (1);
 	idx = argc - 1;
 	tmp = input_check(argc, argv);
