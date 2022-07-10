@@ -6,12 +6,11 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:43:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/29 18:23:07 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/10 16:48:06 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "str_ary.h"
 #include "so_long.h"
 
 void	*init_strs(t_strary *strs, int size)
@@ -92,6 +91,6 @@ void	*free_strs(t_strary *strs, int size)
 
 void	*free_cont(t_strary *strs)
 {
-	free (strs);
+	free(strs);
 	return (NULL);
 }

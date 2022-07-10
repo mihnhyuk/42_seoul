@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/07/09 16:19:00 by minhjang         ###   ########.fr        #
+#    Updated: 2022/07/10 17:06:48 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,12 @@ LIB = $(INC_PATH)/mlx
 NAME = so_long
 
 SRCS = 	main.c\
+	input.c\
+	ft_strdup.c\
+	get_next_line.c\
+	get_next_line_utils.c\
+	str_ary.c\
+	draw_map.c
 	
 		
 .SUFFIXES : .c .o

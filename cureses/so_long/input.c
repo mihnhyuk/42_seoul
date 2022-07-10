@@ -6,14 +6,13 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:25:51 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/29 22:12:13 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/10 16:46:12 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "so_long.h"
+#include "str_ary.h"
 #include <fcntl.h>
-#include <stdio.h>
 
 static int	line_check(const char *str);
 static int			cw(t_strary *map, int w, int h, int *ECP);
