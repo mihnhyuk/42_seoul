@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:53:26 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/10 17:00:03 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/10 18:16:01 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define SO_LONG_H
 
 #include "str_ary.h"
-#define PIX 3
+#define PIX 50
+
 typedef struct	s_data {
 	void	*img;
 	char	*addr;
@@ -22,6 +23,11 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
 
 char		*ft_strdup(char *src);
 t_strary	*read_map(const char *map_name);
