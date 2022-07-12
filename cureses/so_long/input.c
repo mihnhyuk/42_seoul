@@ -6,12 +6,12 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:25:51 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/10 16:46:12 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/13 02:40:40 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "str_ary.h"
+#include "so_long.h"
 #include <fcntl.h>
 
 static int	line_check(const char *str);

@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_ary.h                                          :+:      :+:    :+:   */
+/*   key_func.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 22:41:35 by minhjang          #+#    #+#             */
-/*   Updated: 2022/06/29 16:23:32 by minhjang         ###   ########.fr       */
+/*   Created: 2022/07/11 15:36:36 by minhjang          #+#    #+#             */
+/*   Updated: 2022/07/13 05:00:41 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STR_ARY_H
-# define STR_ARY_H
+#include "so_long.h"
 
-typedef struct s_strary
+int	key_hook(int keycode, t_vars *vars)
 {
-	char **ary;
-	int	capacity;
-	int	size;
-	int	width;
-}	t_strary;
+	if (keycode == ESC)
+	 	end_game(vars);
+	else if (keycode == UP)
+		up(vars);
+	else if (keycode == DOWN)
+		down(vars);
+	else if (keycode == RIGHT)
+		right(vars);
+	else if (keycode == LEFT)
+		left(vars);
+	return (0);
+}
 
-void		*init_strs(t_strary *strs, int size);
-void		*push_string(t_strary *strs, char *str);
-t_strary	*copy_strs(t_strary *org);
-void		*free_strs(t_strary *strs, int size);
-void		*free_cont(t_strary *strs);
-
-#endif
