@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:53:26 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/13 05:03:28 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:41:35 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_strary
 	int	x;
 	int	y;
 	int	movements;
+	int	coin_num;
+	int	**coll_pos;
 }	t_strary;
 
 typedef struct	s_vars
@@ -55,6 +57,7 @@ void		*push_string(t_strary *strs, char *str);
 t_strary	*copy_strs(t_strary *org);
 void		*free_strs(t_strary *strs, int size);
 void		*free_cont(t_strary *strs);
+void		*free_coll(t_strary *map, int size);
 char		*ft_strdup(char *src);
 void		ft_putnbr_fd(int n, int fd);
 t_strary	*read_map(const char *map_name);
@@ -70,5 +73,6 @@ void		right(t_vars *vars);
 void		up(t_vars *vars);
 void		down(t_vars *vars);
 int			end_game(t_vars *vars);
+void		check_event(t_vars *vars, int x, int y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 22:56:51 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/13 05:03:17 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:42:45 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	left(t_vars *vars)
 		vars->map->movements += 1;
 		ft_putnbr_fd(vars->map->movements, 1);
 		write(1, "\n", 1);
+		check_event(vars, cx - 1, cy);
 	}
 }
 
@@ -45,6 +46,7 @@ void	right(t_vars *vars)
 		vars->map->movements += 1;
 		ft_putnbr_fd(vars->map->movements, 1);
 		write(1, "\n", 1);
+		check_event(vars, cx + 1, cy);
 	}
 }
 
@@ -63,6 +65,7 @@ void	up(t_vars *vars)
 		vars->map->movements += 1;
 		ft_putnbr_fd(vars->map->movements, 1);
 		write(1, "\n", 1);
+		check_event(vars, cx, cy - 1);
 	}
 }
 
@@ -81,12 +84,15 @@ void	down(t_vars *vars)
 		vars->map->movements += 1;
 		ft_putnbr_fd(vars->map->movements, 1);
 		write(1, "\n", 1);
+		check_event(vars, cx, cy + 1);
 	}
 }
 
 int	end_game(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
-	//need free
+	free_strs(vars->map, vars->map->size);
+	free_coll(vars->map, vars->map->size);
+	free(vars->map);
 	exit(0);
 }

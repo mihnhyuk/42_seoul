@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_func.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 15:36:36 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/17 10:25:58 by minhjang         ###   ########.fr       */
+/*   Created: 2022/07/17 10:23:01 by minhjang          #+#    #+#             */
+/*   Updated: 2022/07/18 16:44:04 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key_hook(int keycode, t_vars *vars)
+void	*free_coll(t_strary *map, int size)
 {
-	if (keycode == ESC)
-	 	end_game(vars);
-	else if (keycode == UP)
-		up(vars);
-	else if (keycode == DOWN)
-		down(vars);
-	else if (keycode == RIGHT)
-		right(vars);
-	else if (keycode == LEFT)
-		left(vars);
-	return (0);
+	int	idx;
+
+	idx = 0;
+	while (idx < size)
+	{
+		free(map->coll_pos[idx]);
+		idx++;
+	}
+	free(map->coll_pos);
+	return (NULL);
 }
 
-// int	collect(t_vars *vars, int px, int py)
-// {
-// 	if (vars->map->)
-// }
+void	check_event(t_vars *vars, int x, int y)
+{
+	if (vars->map->coll_pos[y][x] == 1)
+	{
+		vars->map->coin_num -= 1;
+		vars->map->coll_pos[y][x] = 0;
+	}
+	else if (vars->map->ary[y][x] == 'E' && vars->map->coin_num == 0)
+	{
+		end_game(vars);
+	}
+}

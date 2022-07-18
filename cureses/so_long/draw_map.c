@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 15:15:14 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/13 05:02:48 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:30:08 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	draw_player(t_vars *vars, int x, int y)
 {
 	vars->map->x = x;
 	vars->map->y = y;
+	
 	pixel_put(vars, x, y, PLAYERC);
 }
 
@@ -73,7 +74,6 @@ void	draw_empty(t_vars *vars, int x, int y)
 
 void	pixel_put(t_vars *vars, int x, int y, int color)
 {
-	char	*dst;
 	int		idx[2];
 
 	idx[0] = 0;

@@ -6,13 +6,13 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/07/13 04:12:14 by minhjang         ###   ########.fr        #
+#    Updated: 2022/07/17 10:25:31 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = gcc
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Wall -Wextra -fsanitize=address
 OBJECT = $(SRCS:%.c=%.o)
 INC_PATH = ./mlx
 INCLUDE = get_next_line.h\
@@ -31,6 +31,7 @@ SRCS = 	main.c\
 		draw_map.c\
 		key_func.c\
 		move.c\
+		utils.c
 	
 		
 .SUFFIXES : .c .o
@@ -38,10 +39,10 @@ SRCS = 	main.c\
 .PHONY: all clean fclean re
 
 $(NAME) : $(OBJECT)
-	$(CC) $(OBJECT) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECT) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(OBJECT) : $(SRCS)
-	$(CC) -Imlx -c $(@:.o=.c) -o $@
+	$(CC) $(CFLAGS) -Imlx -c $(@:.o=.c) -o $@
 
 
 all: $(NAME)
