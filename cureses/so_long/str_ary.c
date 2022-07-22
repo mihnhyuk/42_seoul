@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:43:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/17 10:24:57 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:32:34 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*init_strs(t_strary *strs, int size)
 	if (strs->ary == NULL)
 		free(strs);
 	strs->width = 0;
-	
 	return (strs->ary);
 }
 
@@ -29,14 +28,13 @@ void	*push_string(t_strary *strs, char *str)
 {
 	char	**tmp;
 	int		i;
-	
+
 	if (strs->size >= strs->capacity)
 	{
 		strs->capacity *= 2;
-		tmp = (char **)malloc(sizeof(char *) *strs->capacity);
+		tmp = (char **)malloc(sizeof(char *) * strs->capacity);
 		if (tmp == NULL)
 			return (free_strs(strs, strs->size));
-		free(strs->coll_pos);
 		i = 0;
 		while (i < strs->size)
 		{
@@ -55,7 +53,7 @@ t_strary	*copy_strs(t_strary *org)
 {
 	t_strary	*copy;
 	int			idx;
-	
+
 	copy = (t_strary *)malloc(sizeof(t_strary));
 	if (copy == NULL)
 		return (NULL);
@@ -74,7 +72,7 @@ t_strary	*copy_strs(t_strary *org)
 			free_strs(copy, idx + 1);
 			return (free_cont(copy));
 		}
- 	}
+	}
 	return (copy);
 }
 

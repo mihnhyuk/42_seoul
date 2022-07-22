@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/07/17 10:25:31 by minhjang         ###   ########.fr        #
+#    Updated: 2022/07/22 18:07:49 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,10 @@ SRCS = 	main.c\
 .PHONY: all clean fclean re
 
 $(NAME) : $(OBJECT)
-	$(CC) $(CFLAGS) $(OBJECT) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) -g $(OBJECT) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(OBJECT) : $(SRCS)
-	$(CC) $(CFLAGS) -Imlx -c $(@:.o=.c) -o $@
+	$(CC) $(CFLAGS) -g -Imlx -c $(@:.o=.c) -o $@
 
 
 all: $(NAME)
@@ -56,6 +56,3 @@ fclean:
 re:
 	$(MAKE) fclean
 	$(MAKE) all
-
-test:
-	$(CC) -fsanitize=address -g $(SRCS) -o $(NAME)

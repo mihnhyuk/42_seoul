@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:07:16 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/29 14:15:13 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:23:03 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strdup(char *src)
 {
-	 int	str_iter;
+	int		str_iter;
 	char	*new_str;
 
 	str_iter = 0;

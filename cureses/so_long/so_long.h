@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:53:26 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/18 16:41:35 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:28:05 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include "mlx/mlx.h"
 
-# define PIX	50
+# define PIX	32
 # define UP		13
 # define DOWN	1
 # define LEFT	0
@@ -45,12 +45,23 @@ typedef struct s_strary
 	int	**coll_pos;
 }	t_strary;
 
+typedef struct s_imgs
+{
+	void	*floor;
+	void	*wall;
+	void	*collect;
+	void	*exit;
+	void	*player;
+}			t_imgs;
+
 typedef struct	s_vars
 {
 	void		*mlx;
 	void		*win;
 	t_strary	*map;
+	t_imgs		*img;
 }				t_vars;
+
 
 void		*init_strs(t_strary *strs, int size);
 void		*push_string(t_strary *strs, char *str);
@@ -65,6 +76,7 @@ int			input_check(t_strary *map);
 int			check_error(t_strary *map);
 void		draw_map(t_strary *map);
 int			key_hook(int keycode, t_vars *vars);
+void		img_put(t_vars *vars, int x, int y, void *imgs);
 void		pixel_put(t_vars *vars, int x, int y, int color);
 void		draw_player(t_vars *vars, int x, int y);
 void		draw_empty(t_vars *vars, int x, int y);
@@ -74,5 +86,10 @@ void		up(t_vars *vars);
 void		down(t_vars *vars);
 int			end_game(t_vars *vars);
 void		check_event(t_vars *vars, int x, int y);
+void		get_asset(t_vars *var, t_imgs *imgs);
+void		*print_err(t_strary *map, t_strary *copy);
+int			map_name_check(char *arg, t_strary **map);
+int			map_size_check(t_strary *map);
+int			line_too_long(t_strary *map, int w, int h, int *ecp);
 
 #endif

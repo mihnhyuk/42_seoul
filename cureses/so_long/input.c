@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:25:51 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/13 02:40:40 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:28:24 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 
 static int	line_check(const char *str);
-static int			cw(t_strary *map, int w, int h, int *ECP);
+static int	cw(t_strary *map, int w, int h, int *ecp);
 
 t_strary	*read_map(const char *map_name)
 {
@@ -69,12 +69,12 @@ int	check_error(t_strary *map)
 {
 	int	w;
 	int	h;
-	int	ECP[3];
+	int	ecp[3];
 
 	h = -1;
-	ECP[0] = 0;
-	ECP[1] = 0;
-	ECP[2] = 0;
+	ecp[0] = 0;
+	ecp[1] = 0;
+	ecp[2] = 0;
 	while (++h < map->size)
 	{
 		w = -1;
@@ -82,43 +82,41 @@ int	check_error(t_strary *map)
 		{
 			if (map->ary[h][w] != '1')
 			{
-				if (!cw(map, w, h, ECP))
+				if (!cw(map, w, h, ecp))
 					return (0);
 			}
 		}
 	}
-	if (!(ECP[0] && ECP[1] && ECP[2]))
+	if (!(ecp[0] && ecp[1] && ecp[2]))
 		return (0);
 	return (1);
 }
 
-static int	cw(t_strary *map, int w, int h, int *ECP)
+static int	cw(t_strary *map, int w, int h, int *ecp)
 {
 	if (w < 0 || h < 0 || w >= map->width || h >= map->size
-			|| (ECP[2] == 1 && map->ary[h][w] == 'P'))
+		|| (ecp[2] == 1 && map->ary[h][w] == 'P'))
 		return (0);
 	if (map->ary[h][w] == '1')
 		return (1);
 	else if (map->ary[h][w] == 'E')
 	{
-		ECP[0] = 1;
+		ecp[0] = 1;
 		map->ary[h][w] = '1';
 	}
 	else if (map->ary[h][w] == 'C')
 	{
-		ECP[1] = 1;
+		ecp[1] = 1;
 		map->ary[h][w] = '1';
 	}
 	else if (map->ary[h][w] == 'P')
 	{
-		ECP[2] = 1;
+		ecp[2] = 1;
 		map->ary[h][w] = '1';
 	}
 	else if (map->ary[h][w] == '0')
 		map->ary[h][w] = '1';
-	return (cw(map, w - 1, h, ECP) && cw(map, w - 1, h + 1, ECP) && cw(map, w, h + 1, ECP)
-			&& cw(map, w + 1, h + 1, ECP) && cw(map, w + 1, h, ECP) && cw(map, w + 1, h - 1, ECP)
-			&& cw(map, w, h - 1, ECP) && cw(map, w - 1 , h - 1, ECP));
+	return (line_too_long(map, w, h, ecp));
 }
 
 static int	line_check(const char *str)
@@ -126,6 +124,8 @@ static int	line_check(const char *str)
 	int	iter;
 
 	iter = 0;
+	if (str == NULL)
+		return (0);
 	while (str[iter] && str[iter] != '\n')
 	{
 		if (!(str[iter] == '0' || str[iter] == '1' || str[iter] == 'C'

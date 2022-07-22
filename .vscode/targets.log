@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Sun Jul 17 10:25:32 2022
+# Make data base, printed on Fri Jul 22 18:09:53 2022
 
 # Variables
 
@@ -31,6 +31,7 @@ CURDIR := /Users/mihnhyuk/code/42_seoul
 # makefile
 SHELL = /bin/sh
 # environment
+ 
 VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"738ac08552cca045871a73764b8c446f.ko","_translationsConfigFile":"/Users/mihnhyuk/Library/Application Support/Code/clp/738ac08552cca045871a73764b8c446f.ko/tcf.json","_cacheRoot":"/Users/mihnhyuk/Library/Application Support/Code/clp/738ac08552cca045871a73764b8c446f.ko","_resolvedLanguagePackCoreLocation":"/Users/mihnhyuk/Library/Application Support/Code/clp/738ac08552cca045871a73764b8c446f.ko/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/Users/mihnhyuk/Library/Application Support/Code/clp/738ac08552cca045871a73764b8c446f.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
@@ -161,7 +162,6 @@ SUFFIXES :=
 # environment
 MAKELEVEL := 0
 # environment
- 
 LANG = C
 # environment
 VSCODE_PID = 2632
@@ -248,6 +248,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Sun Jul 17 10:25:32 2022
+# Finished Make data base on Fri Jul 22 18:09:53 2022
 
  
