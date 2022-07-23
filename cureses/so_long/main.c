@@ -6,13 +6,11 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:28:52 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/23 11:02:25 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/23 15:07:41 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <unistd.h>
-#include <stdlib.h>
 
 static t_strary	*get_input(int argc, char **argv);
 static void		get_coin(t_strary *map);
