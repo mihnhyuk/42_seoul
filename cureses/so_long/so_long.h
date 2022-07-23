@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:53:26 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/22 18:28:05 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/23 11:04:19 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "mlx/mlx.h"
 
 # define PIX	32
@@ -91,5 +90,6 @@ void		*print_err(t_strary *map, t_strary *copy);
 int			map_name_check(char *arg, t_strary **map);
 int			map_size_check(t_strary *map);
 int			line_too_long(t_strary *map, int w, int h, int *ecp);
+int			cw(t_strary *map, int w, int h, int *ecp);
 
 #endif

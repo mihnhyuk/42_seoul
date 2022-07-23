@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:28:52 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/22 18:30:04 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/23 11:02:25 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	draw_map(map);
-	system("leaks so_long");
 }
 
 static t_strary	*get_input(int argc, char **argv)
