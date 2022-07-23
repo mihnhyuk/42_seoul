@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:25:51 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/23 11:04:21 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:58:58 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 
 static int	line_check(const char *str);
-int	cw(t_strary *map, int w, int h, int *ecp);
+int			cw(t_strary *map, int w, int h, int *ecp);
 
 t_strary	*read_map(const char *map_name)
 {

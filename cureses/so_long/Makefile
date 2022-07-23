@@ -6,13 +6,13 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/07/23 15:05:25 by minhjang         ###   ########.fr        #
+#    Updated: 2022/07/23 18:28:28 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra 
 OBJECT = $(SRCS:%.c=%.o)
 INC_PATH = ./mlx
 INCLUDE = get_next_line.h\

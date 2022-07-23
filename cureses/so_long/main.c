@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:28:52 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/23 15:07:41 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:58:40 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	draw_map(map);
+	return (0);
 }
 
 static t_strary	*get_input(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:53:26 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/23 11:04:19 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/23 18:06:01 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@
 
 typedef struct s_strary
 {
-	char **ary;
-	int	capacity;
-	int	size;
-	int	width;
-	int	x;
-	int	y;
-	int	movements;
-	int	coin_num;
-	int	**coll_pos;
+	char	**ary;
+	int		capacity;
+	int		size;
+	int		width;
+	int		x;
+	int		y;
+	int		movements;
+	int		coin_num;
+	int		**coll_pos;
 }	t_strary;
 
 typedef struct s_imgs
@@ -53,14 +53,13 @@ typedef struct s_imgs
 	void	*player;
 }			t_imgs;
 
-typedef struct	s_vars
+typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
 	t_strary	*map;
 	t_imgs		*img;
 }				t_vars;
-
 
 void		*init_strs(t_strary *strs, int size);
 void		*push_string(t_strary *strs, char *str);
