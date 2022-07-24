@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 15:15:14 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/22 18:22:42 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/24 17:36:14 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_map(t_strary *map)
 	t_imgs	imgs;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1000, "Hello world!");
+	vars.win = mlx_new_window(vars.mlx, 1920, 1000, "so long");
 	map->movements = 0;
 	vars.map = map;
 	get_asset(&vars, &imgs);

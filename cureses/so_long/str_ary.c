@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 22:43:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/22 18:32:34 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/24 18:14:34 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	*free_strs(t_strary *strs, int size)
 		free(strs->ary[idx]);
 		idx++;
 	}
+	free(strs->ary);
 	return (NULL);
 }
 
