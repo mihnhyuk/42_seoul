@@ -5,54 +5,56 @@
 #                                                     +:+ +:+         +:+      #
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/11 13:21:56 by minhjang          #+#    #+#              #
-#    Updated: 2022/07/24 19:46:33 by minhjang         ###   ########.fr        #
+#    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
+#    Updated: 2022/07/27 21:29:42 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Werror -Wall -Wextra
+FSAN = -fsanitize=address
 OBJECT = $(SRCS:%.c=%.o)
-INC_PATH = ./mlx
-INCLUDE = get_next_line.h\
-	so_long.h\
-	$(INC_PATH)/mlx.h
-LIB = $(INC_PATH)/mlx
-NAME = so_long
 
-SRCS = 	main.c\
-		input.c\
-		ft_strdup.c\
-		ft_putnbr_fd.c\
-		get_next_line.c\
-		get_next_line_utils.c\
-		str_ary.c\
-		draw_map.c\
-		key_func.c\
-		move.c\
-		utils.c
+SRCPATH = ./src/
+LIBPATH = ./libft/
+LIB = $(LIBPATH)libft.a
+NAME = server\
+		client
+
+CLIENTPATH = ./clientsrc/
+CLIENT = $(CLIENTPATH)client.c
+SERVERPATH = ./serversrc/
+SERVER = $(SERVERPATH)server.c
+
+SRCS =	$(CLIENT)\
+		$(SERVER)
+
+INCLUDE = $(LIBPATH)libft.h
+
+.SUFFIXES: .c .o
+
+.PHONY: all clean fclean re test
+
+$(NAME) : $(OBJECT) $(LIB)
 	
-		
-.SUFFIXES : .c .o
 
-.PHONY: all clean fclean re
+$(LIB) :
+	cd $(LIBPATH) && $(MAKE) all
 
-$(NAME) : $(OBJECT)
-	$(CC) $(CFLAGS) $(OBJECT) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
-$(OBJECT) : $(SRCS)
-	$(CC) $(CFLAGS) -Imlx -c $(@:.o=.c) -o $@
-
+$(OBJECT) :
+	$(CC) $(CFLAGS) -c $(@:.o=.c) -o $@
 
 all: $(NAME)
 
 clean:
 	rm -f $(OBJECT)
+	cd $(LIBPATH) && $(MAKE) clean
 
-fclean:
-	$(MAKE) clean
+fclean: clean
 	rm -f $(NAME)
-re:
-	$(MAKE) fclean
-	$(MAKE) all
+	cd $(LIBPATH) && $(MAKE) fclean
+
+re: fclean all
+
+test: re
+	$(CC) $(CFLAGS) main.c -L. -lftprintf
