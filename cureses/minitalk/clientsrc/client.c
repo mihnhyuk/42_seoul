@@ -6,13 +6,12 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:33 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/30 17:59:36 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/30 19:26:24 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
-static int  error_msg(char *msg);
 static int  pid_check(char *pid);
 
 int main(int argc, char **argv){
@@ -40,7 +39,7 @@ static int  pid_check(char *pid)
         return (atoid);
 }
 
-static int  error_msg(char *msg)
+int  error_msg(char *msg)
 {
     ft_printf("%s\n", msg);
     return (0);

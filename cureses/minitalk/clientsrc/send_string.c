@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 16:06:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/30 18:01:01 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/30 19:18:02 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void    send_string_sig(int pid, char * sig)
         send_bit(pid, (unsigned char)*sig);
         sig++;
     }
+    send_bit(pid, (unsigned char)0);
 }
 
 static void    send_bit(int pid, unsigned char c)
@@ -32,12 +33,14 @@ static void    send_bit(int pid, unsigned char c)
     {
         if ((c & 1) == 0)
         {
-            ft_printf("0: %d\n", kill(pid, SIGUSR1));
+            if (kill(pid, SIGUSR1) == -1)
+                error_msg("Send error");
             pause();
         }
         else
         {
-            ft_printf("1: %d\n", kill(pid, SIGUSR2));
+            if (kill(pid, SIGUSR2) == -1)
+                error_msg("Send error");
             pause();
         }
         c = (c >> 1);

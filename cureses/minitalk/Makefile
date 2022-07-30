@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/07/30 18:00:24 by minhjang         ###   ########.fr        #
+#    Updated: 2022/07/30 19:01:59 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ CLIENTSRC = $(CLIENTPATH)client.c\
 CLIENT = client
 SERVERPATH = ./serversrc/
 SERVERSRC = $(SERVERPATH)server.c \
-			$(SERVERPATH)sighandler.c
+			$(SERVERPATH)sighandler.c \
+			$(SERVERPATH)utils.c \
+			$(SERVERPATH)decoder.c
 SERVER = server
 
 

@@ -6,11 +6,11 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 17:58:13 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/30 18:00:40 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:30:05 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    receive_check_handler(int signum)
+void	receive_check_handler(int signum)
 {
-    (void)signum;
+	(void)signum;
 }

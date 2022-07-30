@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 15:12:04 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/30 17:51:16 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:25:43 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	init_sigstruct(struct sigaction *sig1, struct sigaction *sig2);
 
-int main()
+int	main(void)
 {
-	struct sigaction sig1;
-	struct sigaction sig2;
+	struct sigaction	sig1;
+	struct sigaction	sig2;
 
 	init_sigstruct(&sig1, &sig2);
 	ft_printf("Process ID : %d\n", getpid());

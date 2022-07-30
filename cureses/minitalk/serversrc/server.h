@@ -6,18 +6,29 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 21:27:45 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/30 17:52:08 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/07/30 19:31:03 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERVER_H
 # define SERVER_H
 
-#include "../libft/includes/ft_printf.h"
-#include <unistd.h>
-#include <signal.h>
+# include "../libft/includes/ft_printf.h"
+# include <unistd.h>
+# include <signal.h>
+# include <stdlib.h>
 
-void    sig_handler1(int signum, siginfo_t *info, void *context);
-void    sig_handler2(int signum, siginfo_t *info, void *context);
+typedef struct s_dynamicStr
+{
+	char	*str;
+	int		capacity;
+	int		length;
+}			t_dynamicStr;
+
+void	sig_handler1(int signum, siginfo_t *info, void *context);
+void	sig_handler2(int signum, siginfo_t *info, void *context);
+int 	push_back(t_dynamicStr *str, char c);
+int		error_msg(char *msg);
+void	decoder(unsigned char bit);
 
 #endif
