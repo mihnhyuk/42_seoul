@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 16:06:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/03 20:32:24 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/03 20:42:31 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static int	send_null(int pid)
 		if (kill(pid, SIGUSR1) == -1)
 			return (error_msg("Send error"));
 		usleep(50);
-		// pause();
 		idx++;
 	}
 	return (0);
