@@ -6,29 +6,29 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:23:10 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/30 19:01:29 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:35:22 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-int push_back(t_dynamicStr *str, char c)
+int	push_back(t_dynamicStr *str, char c)
 {
-    char    *tmp;
+	char	*tmp;
 	int		idx;
-    
-    if (str->length + 1 < str->capacity)
-    {
+
+	if (str->length + 1 < str->capacity)
+	{
 		str->str[(str->length)++] = c;
 		str->str[str->length] = 0;
 		return (1);
-    }
-    str->capacity *= 2;
-    tmp = (char *)malloc(str->capacity * sizeof(char));
+	}
+	str->capacity *= 2;
+	tmp = (char *)malloc(str->capacity * sizeof(char));
 	if (tmp == NULL)
 	{
 		error_msg("Memory shortage");
-		return(0);
+		return (0);
 	}
 	idx = -1;
 	while (++idx < str->length)
@@ -40,8 +40,8 @@ int push_back(t_dynamicStr *str, char c)
 	return (1);
 }
 
-int  error_msg(char *msg)
+int	error_msg(char *msg)
 {
-    ft_printf("%s\n", msg);
-    return (0);
+	ft_printf("%s\n", msg);
+	return (0);
 }

@@ -6,16 +6,16 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:46:01 by minhjang          #+#    #+#             */
-/*   Updated: 2022/07/30 19:32:49 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/03 20:25:57 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-static void	init_decoder(t_dynamicStr *s);
-static void bit_shifting(char *c, int *c_bit, unsigned char bit);
+static int	init_decoder(t_dynamicStr *s);
+static void	bit_shifting(char *c, int *c_bit, unsigned char bit);
 
-void	decoder(unsigned char bit)
+int	decoder(unsigned char bit)
 {
 	static char			c;
 	static int			c_bit;
@@ -24,24 +24,27 @@ void	decoder(unsigned char bit)
 
 	if (flag == 0)
 	{
-		init_decoder(&s);
+		if (init_decoder(&s) == -1)
+			return (-1);
 		flag = 1;
 	}
 	bit_shifting(&c, &c_bit, bit);
-    if (c_bit == 8)
+	if (c_bit == 8)
 	{
 		if (c == 0)
 		{
-			ft_printf("%s\n", s.str);
+			ft_printf("%s\nProcess ID : %d\n", s.str, getpid());
 			free(s.str);
 			flag = 0;
+			c_bit = 0;
 		}
 		if (!push_back(&s, c))
-			exit(0);
+			return (-1);
 	}
+	return (0);
 }
 
-static void	init_decoder(t_dynamicStr *s)
+static int	init_decoder(t_dynamicStr *s)
 {
 	s->capacity = 10;
 	s->length = 0;
@@ -49,11 +52,12 @@ static void	init_decoder(t_dynamicStr *s)
 	if (s->str == NULL)
 	{
 		error_msg("Memory shortage");
-		exit(0);
+		return (1);
 	}
+	return (0);
 }
 
-static void bit_shifting(char *c, int *c_bit, unsigned char bit)
+static void	bit_shifting(char *c, int *c_bit, unsigned char bit)
 {
 	int	idx;
 
