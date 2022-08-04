@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:33 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/03 20:20:18 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/04 09:01:10 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 	if (argc != 3)
 		return (error_msg("You must enter pid and string"));
 	pid = pid_check(argv[1]);
+	if (pid == -1)
+		return (error_msg("pid range error"));
 	signal(SIGUSR1, receive_check_handler);
 	signal(SIGUSR2, error_catcher);
 	send_string_sig(pid, argv[2]);
@@ -31,10 +33,8 @@ static int	pid_check(char *pid)
 {
 	int	atoid;
 
-	if (pid[0] == '0')
-		return (0);
 	atoid = ft_atoi(pid);
-	if (atoid == 0)
+	if (atoid < 101 || atoid > 100000)
 		return (-1);
 	else
 		return (atoid);
