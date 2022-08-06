@@ -1,24 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 13:39:19 by minhjang          #+#    #+#             */
-/*   Updated: 2021/12/29 13:39:39 by minhjang         ###   ########.fr       */
+/*   Created: 2022/08/04 12:13:10 by minhjang          #+#    #+#             */
+/*   Updated: 2022/08/06 15:35:53 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *s, int c, unsigned int n)
-{
-	char	*tmp;
+#include "philo.h"
 
-	tmp = (char *)s;
-	while (n > 0)
-	{
-		*tmp++ = c;
-		n--;
-	}
-	return (s);
+void *routine(void *args)
+{
+	t_philo *philo;
+
+	philo = (t_philo *)args;
+	if (philo->state == 0)
+		eat(philo);
+	else if (philo->state == 1)
+		sleep(philo);
+	else if (philo->state == 2)
+		think(philo);
+}
+
+void eat(t_philo *philo)
+{
+	printf("eating\n");
+	usleep(1);
+}
+
+void sleep(t_philo *philo)
+{
+	printf("sleeping\n");
+	usleep(1);
+}
+
+void think(t_philo *philo)
+{
+	printf("time, \n")
+	usleep(1);
 }

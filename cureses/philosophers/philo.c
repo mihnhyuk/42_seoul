@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:34:05 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 11:58:26 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/06 15:25:22 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 {
 	t_args args;
 	t_table table;
+	t_philo	philos;
 
 	input_check(argc, argv, &args);
 	init_table(&args, &table);

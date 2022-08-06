@@ -6,11 +6,17 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 10:43:37 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 12:13:19 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/06 15:27:33 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	error_msg(char *msg)
+{
+	printf("%s\n", msg);
+	return (0);
+}
 
 int input_check(int argc, char **argv, t_args *args)
 {
@@ -31,7 +37,7 @@ int input_check(int argc, char **argv, t_args *args)
 		return (0);
 }
 
-int init_table(t_args *args, t_table *table)
+int init_table(t_args *args, t_table *table, t_philo *philos)
 {
 	int	idx;
 
@@ -46,6 +52,8 @@ int init_table(t_args *args, t_table *table)
 	while (++idx < args->philos_n)
 	{
 		pthread_mutex_init(table->forks[idx], NULL);
-		pthread_ini
+		pthread_create(table->pthrerad[idx], NULL, routine, (void *)args);
 	}
+	philos->args = args;
+	philos->table = table;
 }

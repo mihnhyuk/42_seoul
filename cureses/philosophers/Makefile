@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/08/04 12:13:17 by minhjang         ###   ########.fr        #
+#    Updated: 2022/08/06 15:28:31 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME = philo
 
 SRCS =	philo.c \
 		utils.c \
-		table.c		
+		routine.c		
 
 INCLUDE = $(LIBPATH)libft.h
 
