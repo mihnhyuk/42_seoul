@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:23:10 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/03 16:35:22 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/04 10:29:27 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,12 @@ int	error_msg(char *msg)
 {
 	ft_printf("%s\n", msg);
 	return (0);
+}
+
+void	*ft_free(void *dm)
+{
+	if (dm != NULL)
+		free(dm);
+	dm = NULL;
+	return (NULL);
 }

@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2022/08/04 09:34:05 by minhjang          #+#    #+#             */
+/*   Updated: 2022/08/04 11:58:26 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "philo.h"
 
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+static int sit_at_table(t_args *args, t_table *table);
+
+int main(int argc, char **argv)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
-	{
-		if (decoder(0) == -1)
-			return ;
-	}
+	t_args args;
+	t_table table;
+
+	input_check(argc, argv, &args);
+	init_table(&args, &table);
+	sit_at_table(&args, &table)
 }
 
-void	sig_handler2(int signum, siginfo_t *info, void *context)
+static int sit_at_table(t_args *args, t_table *table)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
-	{
-		if (decoder(1) == -1)
-			return ;
-	}
+	
 }

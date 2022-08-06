@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/22 16:08:21 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 15:58:48 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "libft.h"
 
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
-	{
-		if (decoder(0) == -1)
-			return ;
-	}
-}
+	unsigned int	length;
+	unsigned int	idx;
+	char			*result;
 
-void	sig_handler2(int signum, siginfo_t *info, void *context)
-{
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
+	length = ft_strlen(s);
+	idx = 0;
+	result = (char *)malloc(sizeof(char) * length + 1);
+	if (!result)
+		return (NULL);
+	while (idx < length)
 	{
-		if (decoder(1) == -1)
-			return ;
+		result[idx] = (*f)(idx, s[idx]);
+		idx++;
 	}
+	result[idx] = 0;
+	return (result);
 }

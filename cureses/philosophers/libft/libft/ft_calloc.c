@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 14:03:23 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/30 21:55:47 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "libft.h"
 
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+void	*ft_calloc(size_t number, size_t size)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
-	{
-		if (decoder(0) == -1)
-			return ;
-	}
-}
+	char	*result;
 
-void	sig_handler2(int signum, siginfo_t *info, void *context)
-{
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
-	{
-		if (decoder(1) == -1)
-			return ;
-	}
+	result = (char *) malloc(number * size);
+	if (!result)
+		return (NULL);
+	ft_memset(result, 0, number * size);
+	return (result);
 }

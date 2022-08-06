@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:53:21 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 13:53:22 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
-
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+int	ft_isdigit(int c)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
-	{
-		if (decoder(0) == -1)
-			return ;
-	}
-}
-
-void	sig_handler2(int signum, siginfo_t *info, void *context)
-{
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
-	{
-		if (decoder(1) == -1)
-			return ;
-	}
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

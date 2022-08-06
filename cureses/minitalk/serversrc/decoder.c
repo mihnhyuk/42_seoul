@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 18:46:01 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/03 20:25:57 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:49:23 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	decoder(unsigned char bit)
 		if (c == 0)
 		{
 			ft_printf("%s\nProcess ID : %d\n", s.str, getpid());
-			free(s.str);
+			ft_free(s.str);
 			flag = 0;
 			c_bit = 0;
 		}
-		if (!push_back(&s, c))
+		else if (!push_back(&s, c))
 			return (-1);
 	}
 	return (0);

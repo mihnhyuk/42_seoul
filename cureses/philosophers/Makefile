@@ -6,38 +6,22 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/08/04 10:35:54 by minhjang         ###   ########.fr        #
+#    Updated: 2022/08/04 12:13:17 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra -lpthread
 FSAN = -fsanitize=address
-OBJECT = $(OBJECTCLI) $(OBJECTSERV)
-OBJECTCLI = $(CLIENTSRC:%.c=%.o)
-OBJECTSERV = $(SERVERSRC:%.c=%.o)
+OBJECT = $(SRCS:%.c=%.o)
 
-SRCPATH = ./src/
 LIBPATH = ./libft
 LIB = libftprintf.a
-NAME = $(SERVER)\
-		$(CLIENT)
+NAME = philo
 
-CLIENTPATH = ./clientsrc/
-CLIENTSRC = $(CLIENTPATH)client.c\
-			$(CLIENTPATH)send_string.c \
-			$(CLIENTPATH)check_receive.c
-CLIENT = client
-SERVERPATH = ./serversrc/
-SERVERSRC = $(SERVERPATH)server.c \
-			$(SERVERPATH)sighandler.c \
-			$(SERVERPATH)utils.c \
-			$(SERVERPATH)decoder.c
-SERVER = server
-
-
-SRCS =	$(CLIENT)\
-		$(SERVER)
+SRCS =	philo.c \
+		utils.c \
+		table.c		
 
 INCLUDE = $(LIBPATH)libft.h
 
@@ -46,8 +30,7 @@ INCLUDE = $(LIBPATH)libft.h
 .PHONY: all clean fclean re test
 
 $(NAME) : $(OBJECT) $(LIB)
-	$(CC) $(CFLAGS) -L$(LIBPATH) -lftprintf $(OBJECTSERV) -o $(SERVER)
-	$(CC) $(CFLAGS) -L$(LIBPATH) -lftprintf $(OBJECTCLI) -o $(CLIENT)
+	$(CC) $(CFLAGS) -L$(LIBPATH) -lftprintf $(OBJECT) -o $(NAME)
 
 $(LIB) :
 	cd $(LIBPATH) && $(MAKE) all

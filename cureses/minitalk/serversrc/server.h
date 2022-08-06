@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 21:27:45 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/03 17:02:37 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/04 10:28:40 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	sig_handler2(int signum, siginfo_t *info, void *context);
 int		push_back(t_dynamicStr *str, char c);
 int		error_msg(char *msg);
 int		decoder(unsigned char bit);
+void	*ft_free(void *dm);
 
 #endif

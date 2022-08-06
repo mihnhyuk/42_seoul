@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/22 16:40:32 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 18:48:40 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "libft.h"
 
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
-	{
-		if (decoder(0) == -1)
-			return ;
-	}
-}
+	unsigned int	idx;
+	unsigned int	length;
 
-void	sig_handler2(int signum, siginfo_t *info, void *context)
-{
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
+	idx = 0;
+	length = ft_strlen(s);
+	while (idx < length)
 	{
-		if (decoder(1) == -1)
-			return ;
+		(*f)(idx, &s[idx]);
+		idx++;
 	}
 }

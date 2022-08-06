@@ -6,7 +6,7 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 17:07:33 by minhjang          #+#    #+#              #
-#    Updated: 2022/08/04 10:35:47 by minhjang         ###   ########.fr        #
+#    Updated: 2022/08/04 10:17:27 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRCS = 	ft_isalpha.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c
+		ft_putnbr_fd.c \
+		error_msg.c
 
 .SUFFIXES : .c .o
 

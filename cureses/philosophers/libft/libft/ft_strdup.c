@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 14:07:16 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 14:15:13 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include <stdlib.h>
 
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+char	*ft_strdup(char *src)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
-	{
-		if (decoder(0) == -1)
-			return ;
-	}
-}
+	int		str_iter;
+	char	*new_str;
 
-void	sig_handler2(int signum, siginfo_t *info, void *context)
-{
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
+	str_iter = 0;
+	while (src[str_iter])
+		str_iter++;
+	new_str = (char *)malloc((str_iter + 1) * sizeof (char));
+	if (new_str == NULL)
 	{
-		if (decoder(1) == -1)
-			return ;
+		return (0);
 	}
+	str_iter = 0;
+	while (src[str_iter])
+	{
+		new_str[str_iter] = src[str_iter];
+		str_iter++;
+	}
+	new_str[str_iter] = '\0';
+	return (new_str);
 }

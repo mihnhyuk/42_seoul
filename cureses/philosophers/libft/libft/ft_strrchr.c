@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:56:46 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/29 13:56:52 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
-
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+char	*ft_strrchr(const char *s, int c)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
-	{
-		if (decoder(0) == -1)
-			return ;
-	}
-}
+	char	*result;
 
-void	sig_handler2(int signum, siginfo_t *info, void *context)
-{
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
+	result = 0;
+	while (*s)
 	{
-		if (decoder(1) == -1)
-			return ;
+		if (*s == c)
+		{
+			result = (char *)s;
+		}
+		s++;
 	}
+	if (c == '\0')
+		return ((char *)s);
+	return (result);
 }

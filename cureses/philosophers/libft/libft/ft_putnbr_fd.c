@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/22 16:52:53 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 19:10:15 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "libft.h"
+#include <unistd.h>
 
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+static void	write_recur(int n, int fd)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
+	char	a;
+
+	a = (n % 10) + '0';
+	if (n / 10 == 0)
 	{
-		if (decoder(0) == -1)
-			return ;
+		write(fd, &a, 1);
+		return ;
+	}
+	else
+	{
+		write_recur(n / 10, fd);
+		write(fd, &a, 1);
 	}
 }
 
-void	sig_handler2(int signum, siginfo_t *info, void *context)
+void	ft_putnbr_fd(int n, int fd)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
+	unsigned int	u_n;
+
+	u_n = n;
+	if (n < 0)
 	{
-		if (decoder(1) == -1)
-			return ;
+		write (fd, "-", 1);
+		u_n = -n;
 	}
+	write_recur(u_n, fd);
 }

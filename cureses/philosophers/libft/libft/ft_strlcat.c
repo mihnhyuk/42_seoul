@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandler.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:42:39 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/04 09:22:35 by minhjang         ###   ########.fr       */
+/*   Created: 2021/12/29 13:55:47 by minhjang          #+#    #+#             */
+/*   Updated: 2021/12/31 14:14:16 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "libft.h"
 
-void	sig_handler1(int signum, siginfo_t *info, void *context)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR1)
-	{
-		if (decoder(0) == -1)
-			return ;
-	}
-}
+	unsigned int	idx;
+	unsigned int	dest_sz;
+	unsigned int	src_sz;
 
-void	sig_handler2(int signum, siginfo_t *info, void *context)
-{
-	(void)info;
-	(void)context;
-	if (signum == SIGUSR2)
+	dest_sz = ft_strlen(dest);
+	if (dest_sz >= size)
+		return (size + ft_strlen(src));
+	idx = 0;
+	while (idx + dest_sz + 1 < size && src[idx])
 	{
-		if (decoder(1) == -1)
-			return ;
+		dest[idx + dest_sz] = src[idx];
+		idx++;
 	}
+	dest[idx + dest_sz] = '\0';
+	src_sz = ft_strlen(src);
+	return (dest_sz + src_sz);
 }
