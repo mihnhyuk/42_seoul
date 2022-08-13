@@ -6,22 +6,21 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/08/06 15:28:31 by minhjang         ###   ########.fr        #
+#    Updated: 2022/08/11 21:13:18 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -Werror -Wall -Wextra -lpthread
+CC = cc
+CFLAGS = -Werror -Wall -Wextra
 FSAN = -fsanitize=address
 OBJECT = $(SRCS:%.c=%.o)
 
-LIBPATH = ./libft
-LIB = libftprintf.a
 NAME = philo
 
 SRCS =	philo.c \
 		utils.c \
-		routine.c		
+		routine.c \
+		ft_atoi.c	
 
 INCLUDE = $(LIBPATH)libft.h
 
@@ -29,11 +28,8 @@ INCLUDE = $(LIBPATH)libft.h
 
 .PHONY: all clean fclean re test
 
-$(NAME) : $(OBJECT) $(LIB)
-	$(CC) $(CFLAGS) -L$(LIBPATH) -lftprintf $(OBJECT) -o $(NAME)
-
-$(LIB) :
-	cd $(LIBPATH) && $(MAKE) all
+$(NAME) : $(OBJECT)
+	$(CC) $(CFLAGS) -lpthread $(OBJECT) -o $(NAME)
 
 $(OBJECT) :
 	$(CC) $(CFLAGS) -c $(@:.o=.c) -o $@
@@ -42,12 +38,10 @@ all: $(NAME)
 
 clean:
 	rm -f $(OBJECT)
-	cd $(LIBPATH) && $(MAKE) clean
 
 fclean: clean
 	$(MAKE) clean
 	rm -f $(NAME)
-	cd $(LIBPATH) && $(MAKE) fclean
 
 re:
 	$(MAKE) fclean
