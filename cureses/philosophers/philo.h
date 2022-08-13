@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:35:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/13 15:20:23 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:42:17 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ typedef struct s_philo
 	int		left_fork;
 	int		right_fork;
 	t_args	*args;
-	t_table	*table;
+	pthread_mutex_t		*forks;
+	pthread_t			*philos;
 }t_philo;
 
 int			input_check(int argc, char **argv, t_args *args);

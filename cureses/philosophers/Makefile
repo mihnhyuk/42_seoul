@@ -6,12 +6,12 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/08/11 21:13:18 by minhjang         ###   ########.fr        #
+#    Updated: 2022/08/13 15:35:57 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra -fsanitize=address
 FSAN = -fsanitize=address
 OBJECT = $(SRCS:%.c=%.o)
 

@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 10:43:37 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/13 15:27:09 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:43:53 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int input_check(int argc, char **argv, t_args *args)
 int init_table(t_args *args, t_table *table, t_philo *philos)
 {
 	int	idx;
+	pthread_mutex_t	*fork;
 
-	table->forks = (pthread_mutex_t *)malloc(args->philos_n * sizeof(pthread_mutex_t));
-	table->philos = (pthread_t *)malloc(args->philos_n * sizeof(pthread_t));
+	fork = (pthread_mutex_t *)malloc(args->philos_n * sizeof(pthread_mutex_t));
+	philos = (t_philo *)malloc(args->philos_n * sizeof(t_philo));
 	if (table->forks == NULL || table->philos == NULL)
 	{
 		error_msg("Memory shortage");
@@ -60,7 +61,7 @@ int init_table(t_args *args, t_table *table, t_philo *philos)
 	{
 		philos->id = idx;
 		philos->state = 0;
-		set_fork(&philos);
+		set_fork(philos);
 		pthread_create(&table->philos[idx], NULL, routine, (void *)philos);
 	}
 	return (0);
@@ -78,4 +79,10 @@ static void	set_fork(t_philo *philo)
 		philo->left_fork = philo->id - 1;
 		philo->right_fork = philo->id;
 	}
+}
+
+void	*free_all(t_args *args, t_table *table, t_philo *philos)
+{
+
+	return (NULL);
 }
