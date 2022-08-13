@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:35:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/11 22:09:41 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/13 15:20:23 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,16 @@ typedef struct s_philo
 {
 	int		id;
 	int		state;
+	int		left_fork;
+	int		right_fork;
 	t_args	*args;
 	t_table	*table;
 }t_philo;
 
-int		input_check(int argc, char **argv, t_args *args);
-int		init_table(t_args *args, t_table *table, t_philo *philos);
-int		error_msg(char *msg);
-void	*routine(void *args);
-int		ft_atoi(const char *str);
-float	getmillisec(struct timeval t);
+int			input_check(int argc, char **argv, t_args *args);
+int			init_table(t_args *args, t_table *table, t_philo *philos);
+int			error_msg(char *msg);
+void		*routine(void *args);
+int			ft_atoi(const char *str);
 
 #endif
