@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 10:43:37 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/11 22:08:09 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/15 23:23:51 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ int input_check(int argc, char **argv, t_args *args)
 int init_table(t_args *args, t_table *table, t_philo *philos)
 {
 	int	idx;
+	pthread_mutex_t	*fork;
 
-	table->forks = (pthread_mutex_t *)malloc(args->philos_n * sizeof(pthread_mutex_t));
-	table->philos = (pthread_t *)malloc(args->philos_n * sizeof(pthread_t));
-	if (table->forks == NULL || table->philos == NULL)
+	fork = (pthread_mutex_t *)malloc(args->philos_n * sizeof(pthread_mutex_t));
+	philos = (t_philo *)malloc(args->philos_n * sizeof(t_philo));
+	if (fork == NULL || philos == NULL)
 	{
 		error_msg("Memory shortage");
 		exit(0);
@@ -52,13 +53,13 @@ int init_table(t_args *args, t_table *table, t_philo *philos)
 	while (++idx < args->philos_n)
 		pthread_mutex_init(&table->forks[idx], NULL);
 	idx = -1;
-	philos->args = args;
-	philos->table = table;
 	while (++idx < args->philos_n)
 	{
-		philos->id = idx;
-		philos->state = 0;
-		pthread_create(&table->philos[idx], NULL, routine, (void *)philos);
+		philos[idx].id = idx;
+		philos[idx].state = 0;
+		philos[idx].args = args;
+		philos[idx].forks = fork;
+		pthread_create(&table->philos[idx], NULL, routine, (void *)(&philos[idx]));
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:35:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/11 22:09:41 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/15 23:18:32 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_philo
 	int		id;
 	int		state;
 	t_args	*args;
+	pthread_mutex_t		*forks;
+	pthread_t			*philos;
 	t_table	*table;
 }t_philo;
 

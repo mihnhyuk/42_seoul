@@ -10,11 +10,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu Aug 11 21:13:38 2022
+# Make data base, printed on Mon Aug 15 23:04:17 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -46,7 +45,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/l_/n02yy8nj71vccp9qfj3f5ws80000gn/T/vscode-ipc-365202a2-d9ab-4fbc-bf7a-d9a0fdc083b9.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/l_/n02yy8nj71vccp9qfj3f5ws80000gn/T/vscode-ipc-37825158-413c-4a40-940d-6d9290a42429.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -81,7 +80,6 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 HOME = /Users/mihnhyuk
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
- 
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/mihnhyuk/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
@@ -188,7 +186,6 @@ all:
 #  File does not exist.
 #  File has not been updated.
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
@@ -246,6 +243,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Aug 11 21:13:38 2022
+# Finished Make data base on Mon Aug 15 23:04:17 2022
 
  
