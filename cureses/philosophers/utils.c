@@ -6,11 +6,13 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 10:43:37 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/15 23:23:51 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/15 23:26:09 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static void	set_fork(t_philo *philo);
 
 int	error_msg(char *msg)
 {
@@ -64,7 +66,22 @@ int init_table(t_args *args, t_table *table, t_philo *philos)
 	return (0);
 }
 
-float	getmillisec(struct timeval t)
+static void	set_fork(t_philo *philo)
 {
-	return (1e-3 * t.tv_usec + 1e+3 * t.tv_sec);
+	if (philo->id == 0)
+	{
+		philo->left_fork = philo->args->philos_n - 1;
+		philo->right_fork = 0;
+	}
+	else
+	{
+		philo->left_fork = philo->id - 1;
+		philo->right_fork = philo->id;
+	}
+}
+
+void	*free_all(t_args *args, t_table *table, t_philo *philos)
+{
+
+	return (NULL);
 }
