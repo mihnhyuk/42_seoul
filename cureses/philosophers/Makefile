@@ -6,13 +6,12 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/08/13 15:35:57 by minhjang         ###   ########.fr        #
+#    Updated: 2022/08/25 17:57:30 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Werror -Wall -Wextra -fsanitize=address
-FSAN = -fsanitize=address
+CFLAGS = -fsanitize=address -g
 OBJECT = $(SRCS:%.c=%.o)
 
 NAME = philo
@@ -20,7 +19,10 @@ NAME = philo
 SRCS =	philo.c \
 		utils.c \
 		routine.c \
-		ft_atoi.c	
+		ft_atoi.c \
+		monitor.c \
+		ft_queue.c \
+		utils2.c
 
 INCLUDE = $(LIBPATH)libft.h
 
