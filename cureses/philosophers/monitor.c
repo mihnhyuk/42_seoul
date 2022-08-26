@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 18:57:48 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 18:20:07 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/26 11:46:34 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	you_died(t_philo *p);
 int	dead_monitor(t_philo *philos)
 {
 	int				idx;
-	struct timeval	cur_t;	
+	struct timeval	cur_t;
 
 	while (1)
 	{
@@ -26,13 +26,12 @@ int	dead_monitor(t_philo *philos)
 		while (++idx < philos->args->philos_n)
 		{
 			if (philos[idx].state != 0 && philos[idx].state != 8
-				&& philos[idx].state != 9 && ((cur_t.tv_usec / 1000)
-					- (philos[idx].t.tv_usec / 1000)
+				&& philos[idx].state != 9 && (time_diff(to_ms(cur_t), to_ms(philos[idx].t))
 					> philos->args->time_to_die))
 			{
 				you_died(philos);
 				printf("%dms philosopher %d is died\n",
-					cur_t.tv_usec / 1000, idx + 1);
+					to_ms(cur_t), idx + 1);
 				return (0);
 			}
 		}
@@ -76,7 +75,13 @@ void	transaction(t_philo *p, int prev, int cur)
 {
 	pthread_mutex_lock(p->state_m);
 	if (p->state == prev)
+	{
 		p->state = cur;
+	}
+	else
+	{
+		// printf("id: %d state: %d prev: %d cur: %d\n", p->id + 1, p->state, prev, cur);
+	}
 	pthread_mutex_unlock(p->state_m);
 }
 

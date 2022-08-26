@@ -10,14 +10,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu Aug 25 17:57:32 2022
+# Make data base, printed on Fri Aug 26 10:52:50 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
- 
 ?F = $(notdir $?)
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
@@ -54,7 +53,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.DQV9v82gYz/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.FDFLnXqjRP/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -124,7 +123,6 @@ MFLAGS = -Rrqp
 # environment
 XPC_SERVICE_NAME = application.com.microsoft.VSCode.4319716.4319722
 # environment
- 
 HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
@@ -153,7 +151,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 6682
+VSCODE_PID = 633
 # variable set hash-table stats:
 # Load=69/1024=7%, Rehash=0, Collisions=1/89=1%
 
@@ -163,7 +161,7 @@ VSCODE_PID = 6682
 
 # Directories
 
-# . (device 16777233, inode 1757646): 14 files, no impossibilities.
+# . (device 16777231, inode 1757646): 14 files, no impossibilities.
 
 # 14 files, no impossibilities in 1 directories.
 
@@ -212,7 +210,6 @@ makefile:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -238,6 +235,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Aug 25 17:57:32 2022
+# Finished Make data base on Fri Aug 26 10:52:50 2022
 
  

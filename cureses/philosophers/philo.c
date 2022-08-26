@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:34:05 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 18:12:01 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/25 21:25:02 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	sit_at_table(t_philo *philos)
 
 	idx = -1;
 	printf("Philosophers are going to eat\n");
-	while (++idx < 3)
+	while (++idx < 2)
 	{
 		write(1, " . ", 3);
 		sleep(1);
@@ -44,4 +44,11 @@ static void	sit_at_table(t_philo *philos)
 	pthread_create(&r, NULL, routine, (void *)philos);
 	dead_monitor(philos);
 	pthread_join(r, NULL);
+}
+
+int	time_diff(int p, int q)
+{
+	if (q > 9000 && p <= 9000)
+			p += 10000;
+	return (p - q);
 }

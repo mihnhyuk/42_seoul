@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 12:13:10 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 18:19:52 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/26 11:46:03 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,21 @@ void	*ft_try(void *args)
 	philo = (t_philo *)args;
 	deadlock_shield(philo, 0);
 	pthread_mutex_lock(&philo->forks[philo->left_fork]);
+	// pthread_mutex_lock(philo->state_m);
 	gettimeofday(&t, NULL);
-	pthread_mutex_lock(philo->state_m);
 	if (philo->state == 1)
 		printf("%dms philosopher %d has taken fork\n",
-			t.tv_usec / 1000, philo->id + 1);
-	pthread_mutex_unlock(philo->state_m);
+			to_ms(t), philo->id + 1);
+	transaction(philo, 1, 2);
+	// pthread_mutex_unlock(philo->state_m);
 	deadlock_shield(philo, 0);
 	pthread_mutex_lock(&philo->forks[philo->right_fork]);
+	// pthread_mutex_lock(philo->state_m);
 	gettimeofday(&t, NULL);
-	pthread_mutex_lock(philo->state_m);
 	if (philo->state == 1)
 		printf("%dms philosopher %d has taken fork\n",
-			t.tv_usec / 1000, philo->id + 1);
-	pthread_mutex_unlock(philo->state_m);
+			to_ms(t), philo->id + 1);
+	// pthread_mutex_unlock(philo->state_m);
 	ft_eat(philo);
 	transaction(philo, 8, 9);
 	transaction(philo, 10, 9);
@@ -70,13 +71,13 @@ int	ft_eat(void *args)
 	t_philo	*philo;
 
 	philo = (t_philo *)args;
+	// pthread_mutex_lock(philo->state_m);
 	gettimeofday(&philo->t, NULL);
-	pthread_mutex_lock(philo->state_m);
 	if (philo->state == 1)
 		printf("%dms philosopher %d is eating\n",
-			philo->t.tv_usec / 1000, philo->id + 1);
-	pthread_mutex_unlock(philo->state_m);
-	usleep(1000 * philo->args->time_to_eat);
+			to_ms(philo->t), philo->id + 1);
+	// pthread_mutex_unlock(philo->state_m);
+	ft_usleep(philo->args->time_to_sleep, philo->t);
 	philo->eat_n++;
 	if (philo->eat_n == philo->args->eat_n)
 		transaction(philo, 1, 8);
@@ -100,13 +101,13 @@ void	ft_sleep(void *args)
 	t_philo			*philo;
 
 	philo = (t_philo *)args;
+	// pthread_mutex_lock(philo->state_m);
 	gettimeofday(&t, NULL);
-	pthread_mutex_lock(philo->state_m);
 	if (philo->state == 1 || philo->state == 8)
 		printf("%dms philosopher %d is sleeping\n",
-			t.tv_usec / 1000, philo->id + 1);
-	pthread_mutex_unlock(philo->state_m);
-	usleep(1000 * philo->args->time_to_sleep);
+			to_ms(t), philo->id + 1);
+	// pthread_mutex_unlock(philo->state_m);
+	ft_usleep(philo->args->time_to_sleep, t);
 	ft_think((void *)philo);
 }
 
@@ -116,12 +117,12 @@ void	ft_think(void *args)
 	t_philo			*philo;
 
 	philo = (t_philo *)args;
+	// pthread_mutex_lock(philo->state_m);
 	gettimeofday(&t, NULL);
-	pthread_mutex_lock(philo->state_m);
 	if (philo->state == 1 || philo->state == 8)
 		printf("%dms philosopher %d is thinking\n",
-			t.tv_usec / 1000, philo->id + 1);
-	pthread_mutex_unlock(philo->state_m);
+			to_ms(t), philo->id + 1);
+	// pthread_mutex_unlock(philo->state_m);
 	transaction(philo, 1, 0);
 	return ;
 }

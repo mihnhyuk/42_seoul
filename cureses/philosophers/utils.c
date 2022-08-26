@@ -6,13 +6,11 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 10:43:37 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 18:11:19 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/25 23:57:31 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static int	set_fork(t_philo *philo, t_args *args, int idx);
 
 int	error_msg(char *msg)
 {
@@ -60,30 +58,6 @@ int	init_table(t_args *args, t_philo **philos, t_queue *que)
 	return (0);
 }
 
-static int	set_fork(t_philo *philos, t_args *args, int idx)
-{
-	philos[idx].id = idx;
-	philos[idx].state = 0;
-	philos[idx].eat_n = 0;
-	philos[idx].args = args;
-	philos[idx].q = philos[0].q;
-	philos[idx].dl = philos[0].dl;
-	if (idx == 0)
-	{
-		philos[idx].left_fork = philos->args->philos_n - 1;
-		philos[idx].right_fork = 0;
-		idx = -1;
-		while (++idx < args->philos_n)
-			philos[idx].state_m = &(philos[0].state_m[idx]);
-	}
-	else
-	{
-		philos[idx].left_fork = idx - 1;
-		philos[idx].right_fork = idx;
-	}
-	return (0);
-}
-
 void	*free_all(t_philo *philos)
 {
 	int	idx;
@@ -103,4 +77,19 @@ void	*free_all(t_philo *philos)
 	free(philos->forks);
 	free(philos);
 	return (NULL);
+}
+
+int	pop_with_mutex(t_philo *p)
+{
+	int	id;
+
+	pthread_mutex_lock((p->q));
+	id = pop(p->waiting);
+	pthread_mutex_unlock((p->q));
+	while (id != -1 && p[id].state != 0 && p->state != 9)
+	{
+		if (check_done(p))
+			return (id);
+	}
+	return (id);
 }

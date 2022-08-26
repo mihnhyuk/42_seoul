@@ -6,28 +6,13 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:38:14 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 18:20:43 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/25 21:32:05 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static int	set_fork(t_philo *philos, t_args *args, int idx);
-
-int	pop_with_mutex(t_philo *p)
-{
-	int	id;
-
-	pthread_mutex_lock((p->q));
-	id = pop(p->waiting);
-	pthread_mutex_unlock((p->q));
-	while (id != -1 && p[id].state != 0 && p->state != 9)
-	{
-		if (check_done(p))
-			return (id);
-	}
-	return (id);
-}
 
 void	init_mutex(t_args *args, t_philo **philos,
 			t_queue *que, pthread_mutex_t *fork)
@@ -75,4 +60,27 @@ static int	set_fork(t_philo *philos, t_args *args, int idx)
 		philos[idx].right_fork = idx;
 	}
 	return (0);
+}
+
+void	ft_usleep(int ms, struct timeval f)
+{
+	struct timeval	t;
+	int				ff;
+	int				tt;
+
+	ff = to_ms(f);
+	while (1)
+	{
+		gettimeofday(&t, NULL);
+		tt = to_ms(t);
+		if (ff > 9000 && tt <= 9000)
+			tt += 10000;
+		if (tt - ff >= ms)
+			break;
+	}
+}
+
+int	to_ms(struct timeval t)
+{
+	return ((t.tv_sec * 1000 + t.tv_usec / 1000) % 10000);
 }
