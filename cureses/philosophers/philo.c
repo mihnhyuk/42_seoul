@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:34:05 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/26 18:04:08 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:03:21 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	init_queue(&eat_queue, args.philos_n);
 	init_table(&args, &philos, &eat_queue);
 	sit_at_table(philos);
-	free_all(philos);
+	free_all(&philos);
 	return (0);
 }
 

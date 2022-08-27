@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 10:43:37 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/26 18:01:56 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:02:47 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	init_table(t_args *args, t_philo **philos, t_queue *que)
 
 	fork = (pthread_mutex_t *)malloc(args->philos_n * sizeof(pthread_mutex_t));
 	*philos = (t_philo *)malloc(args->philos_n * sizeof(t_philo));
-	(*philos)->q = (pthread_mutex_t *)malloc(3 * sizeof(pthread_mutex_t));
+	(*philos)->q = (pthread_mutex_t *)malloc(2 * sizeof(pthread_mutex_t));
 	(*philos)->state_m = (pthread_mutex_t *)
 		malloc(args->philos_n * sizeof(pthread_mutex_t));
 	(*philos)->dl = (int *)malloc(sizeof(int));
@@ -57,24 +57,24 @@ int	init_table(t_args *args, t_philo **philos, t_queue *que)
 	return (0);
 }
 
-void	*free_all(t_philo *philos)
+void	*free_all(t_philo **philos)
 {
 	int	idx;
 
 	idx = -1;
-	while (++idx < philos->args->philos_n)
+	while (++idx < (*philos)->args->philos_n)
 	{
-		pthread_mutex_destroy(&(philos->forks[idx]));
-		pthread_mutex_destroy(&(philos->state_m[idx]));
+		pthread_mutex_destroy(&((*philos)->forks[idx]));
+		pthread_mutex_destroy(&((*philos)->state_m[idx]));
 	}
-	pthread_mutex_destroy(&(philos->q[2]));
-	pthread_mutex_destroy(&(philos->q[1]));
-	pthread_mutex_destroy(&(philos->q[0]));
-	free(philos->dl);
-	free(philos->waiting->que);
-	free(philos->q);
-	free(philos->forks);
-	free(philos);
+	pthread_mutex_destroy(&((*philos)->q[1]));
+	pthread_mutex_destroy(&((*philos)->q[0]));
+	free((*philos)->dl);
+	free((*philos)->waiting->que);
+	free((*philos)->q);
+	free((*philos)->state_m);
+	free((*philos)->forks);
+	free(*philos);
 	return (NULL);
 }
 
@@ -85,7 +85,7 @@ int	pop_with_mutex(t_philo *p)
 	pthread_mutex_lock((p->q));
 	id = pop(p->waiting);
 	pthread_mutex_unlock((p->q));
-	while (id != -1 && p[id].state != 0 && p[id].state != 9)
+	while (id != -1 && getstate(&p[id]) != 0 && getstate(&p[id]) != 9)
 	{
 		if (check_done(p))
 		{

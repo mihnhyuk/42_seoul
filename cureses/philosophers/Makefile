@@ -6,12 +6,12 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/08/26 16:35:54 by minhjang         ###   ########.fr        #
+#    Updated: 2022/08/27 19:01:38 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Wextra -Wall -Werror
 OBJECT = $(SRCS:%.c=%.o)
 
 NAME = philo
@@ -22,7 +22,8 @@ SRCS =	philo.c \
 		ft_atoi.c \
 		monitor.c \
 		ft_queue.c \
-		utils2.c
+		utils2.c \
+		utils3.c
 
 INCLUDE = $(LIBPATH)libft.h
 

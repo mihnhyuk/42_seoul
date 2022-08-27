@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:35:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/26 17:59:08 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:06:36 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		ft_sleep(void *args);
 void		ft_think(void *args);
 void		print_que(t_queue *que);
 int			pop_with_mutex(t_philo *p);
-void		*free_all(t_philo *philos);
+void		*free_all(t_philo **philos);
 void		transaction(t_philo *p, int prev, int cur);
 void		deadlock_shield(t_philo *p, int pv);
 void		init_mutex(t_args *args, t_philo **philos,
@@ -79,5 +79,8 @@ int			to_ms(struct timeval t);
 int			ft_usleep(int ms, struct timeval f);
 int			time_diff(int p, int q);
 void		even_odd(int *que, int size, int idx);
+int			getstate(t_philo *p);
+void		print_m(struct timeval *t, t_philo *p, char *s);
+void		start_mon(t_philo *philo, struct timeval tv);
 
 #endif

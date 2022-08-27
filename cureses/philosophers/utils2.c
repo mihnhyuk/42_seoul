@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:38:14 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/26 17:12:47 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/27 18:26:00 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_mutex(t_args *args, t_philo **philos,
 	*((*philos)->dl) = 0;
 	pthread_mutex_init(&((*philos)->q[0]), NULL);
 	pthread_mutex_init(&((*philos)->q[1]), NULL);
-	pthread_mutex_init(&((*philos)->q[2]), NULL);
 	idx = -1;
 	while (++idx < args->philos_n)
 	{
