@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 10:43:37 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 23:57:31 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:01:56 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,15 @@ int	input_check(int argc, char **argv, t_args *args)
 		args->eat_n = ft_atoi(argv[5]);
 	else
 		args->eat_n = 0;
-	if (args->philos_n > 1 && args->time_to_die > 0 && args->time_to_eat > 0
+	if (args->philos_n > 0 && args->time_to_die > 0 && args->time_to_eat > 0
 		&& args->time_to_sleep > 0 && args->eat_n >= 0)
 		return (1);
 	else
-		return (0);
+		return (error_msg("Wrong input"));
 }
 
 int	init_table(t_args *args, t_philo **philos, t_queue *que)
 {
-	int				idx;
 	pthread_mutex_t	*fork;
 
 	fork = (pthread_mutex_t *)malloc(args->philos_n * sizeof(pthread_mutex_t));
@@ -86,10 +85,13 @@ int	pop_with_mutex(t_philo *p)
 	pthread_mutex_lock((p->q));
 	id = pop(p->waiting);
 	pthread_mutex_unlock((p->q));
-	while (id != -1 && p[id].state != 0 && p->state != 9)
+	while (id != -1 && p[id].state != 0 && p[id].state != 9)
 	{
 		if (check_done(p))
+		{
 			return (id);
+		}
+		usleep(800);
 	}
 	return (id);
 }

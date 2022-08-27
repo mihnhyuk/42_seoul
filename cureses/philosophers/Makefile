@@ -6,12 +6,12 @@
 #    By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 03:36:18 by minhjang          #+#    #+#              #
-#    Updated: 2022/08/25 17:57:30 by minhjang         ###   ########.fr        #
+#    Updated: 2022/08/26 16:35:54 by minhjang         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -fsanitize=address -g
+CFLAGS = -Werror -Wextra -Wall
 OBJECT = $(SRCS:%.c=%.o)
 
 NAME = philo

@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:35:55 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 21:26:54 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:59:08 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct s_philo
 	int					id;
 	int					state;
 	int					eat_n;
-	int					left_fork;
-	int					right_fork;
+	int					first_fork;
+	int					second_fork;
 	int					*dl;
 	struct timeval		t;
 	t_args				*args;
@@ -76,7 +76,8 @@ void		deadlock_shield(t_philo *p, int pv);
 void		init_mutex(t_args *args, t_philo **philos,
 				t_queue *que, pthread_mutex_t	*fork);
 int			to_ms(struct timeval t);
-void		ft_usleep(int ms, struct timeval f);
+int			ft_usleep(int ms, struct timeval f);
 int			time_diff(int p, int q);
+void		even_odd(int *que, int size, int idx);
 
 #endif

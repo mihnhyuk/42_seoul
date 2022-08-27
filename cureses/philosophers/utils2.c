@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:38:14 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 21:32:05 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:12:47 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,33 @@ void	init_mutex(t_args *args, t_philo **philos,
 static int	set_fork(t_philo *philos, t_args *args, int idx)
 {
 	philos[idx].id = idx;
-	philos[idx].state = 0;
+	philos[idx].state = -1;
 	philos[idx].eat_n = 0;
 	philos[idx].args = args;
 	philos[idx].q = philos[0].q;
 	philos[idx].dl = philos[0].dl;
 	if (idx == 0)
 	{
-		philos[idx].left_fork = philos->args->philos_n - 1;
-		philos[idx].right_fork = 0;
+		philos[idx].first_fork = philos->args->philos_n - 1;
+		philos[idx].second_fork = 0;
 		idx = -1;
 		while (++idx < args->philos_n)
 			philos[idx].state_m = &(philos[0].state_m[idx]);
 	}
-	else
+	else if (idx % 2 == 0)
 	{
-		philos[idx].left_fork = idx - 1;
-		philos[idx].right_fork = idx;
+		philos[idx].first_fork = idx - 1;
+		philos[idx].second_fork = idx;
+	}
+	else if (idx % 2 == 1)
+	{
+		philos[idx].first_fork = idx;
+		philos[idx].second_fork = idx - 1;
 	}
 	return (0);
 }
 
-void	ft_usleep(int ms, struct timeval f)
+int	ft_usleep(int ms, struct timeval f)
 {
 	struct timeval	t;
 	int				ff;
@@ -76,8 +81,10 @@ void	ft_usleep(int ms, struct timeval f)
 		if (ff > 9000 && tt <= 9000)
 			tt += 10000;
 		if (tt - ff >= ms)
-			break;
+			break ;
+		usleep(800);
 	}
+	return (tt);
 }
 
 int	to_ms(struct timeval t)

@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 18:57:48 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/26 11:46:34 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:00:36 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	dead_monitor(t_philo *philos)
 		gettimeofday(&cur_t, NULL);
 		while (++idx < philos->args->philos_n)
 		{
-			if (philos[idx].state != 0 && philos[idx].state != 8
-				&& philos[idx].state != 9 && (time_diff(to_ms(cur_t), to_ms(philos[idx].t))
+			if (philos[idx].state != -1 && philos[idx].state != 8
+				&& philos[idx].state != 9
+				&& (time_diff(to_ms(cur_t), to_ms(philos[idx].t))
 					> philos->args->time_to_die))
 			{
 				you_died(philos);
@@ -37,14 +38,14 @@ int	dead_monitor(t_philo *philos)
 		}
 		if (check_done(philos))
 			break ;
+		usleep(800);
 	}
 	return (0);
 }
 
 int	check_done(t_philo *philo)
 {
-	int				idx;
-	struct timeval	t;
+	int	idx;
 
 	idx = -1;
 	while (++idx < philo->args->philos_n)
@@ -78,29 +79,29 @@ void	transaction(t_philo *p, int prev, int cur)
 	{
 		p->state = cur;
 	}
-	else
-	{
-		// printf("id: %d state: %d prev: %d cur: %d\n", p->id + 1, p->state, prev, cur);
-	}
 	pthread_mutex_unlock(p->state_m);
 }
 
-void	deadlock_shield(t_philo *p, int pv)
+void	even_odd(int *que, int size, int idx)
 {
-	if (pv == 0)
+	if (size % 2 == 0)
 	{
-		pthread_mutex_lock(&(p->q[1]));
-		*(p->dl) += 1;
-		if (*(p->dl) == p->args->philos_n - 1)
-			pthread_mutex_lock(&(p->q[2]));
-		pthread_mutex_unlock(&(p->q[1]));
+		while (++idx < size)
+		{
+			if (idx < size / 2)
+				que[idx] = idx * 2;
+			else
+				que[idx] = (idx - (size / 2)) * 2 + 1;
+		}
 	}
-	else if (pv == 1)
+	else
 	{
-		pthread_mutex_lock(&(p->q[1]));
-		if (*(p->dl) == p->args->philos_n - 1)
-			pthread_mutex_unlock(&(p->q[2]));
-		*(p->dl) -= 1;
-		pthread_mutex_unlock(&(p->q[1]));
+		while (++idx < size)
+		{
+			if (idx <= size / 2)
+				que[idx] = idx * 2;
+			else
+				que[idx] = (idx - (size / 2)) * 2 - 1;
+		}
 	}
 }

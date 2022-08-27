@@ -6,7 +6,7 @@
 /*   By: minhjang <minhjang@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 22:50:09 by minhjang          #+#    #+#             */
-/*   Updated: 2022/08/25 18:11:30 by minhjang         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:58:55 by minhjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	init_queue(t_queue *que, int size)
 	que->tail = size;
 	que->head = 0;
 	idx = -1;
-	while (++idx < size)
-		que->que[idx] = idx;
+	even_odd(que->que, size, idx);
 	return (1);
 }
 
